@@ -12,6 +12,7 @@ const ARROW_WEBSITE = "https://mhgolkar.github.io/Arrow/"
 const CURRENT_RELEASE_TAG = "v3.1.0"
 const ARROW_RELEASES_ARCHIVE = "https://github.com/mhgolkar/Arrow/releases/"
 const LATEST_RELEASE_CHECK_API = "https://api.github.com/repos/mhgolkar/Arrow/releases/latest"
+const OFFLINE_WRITING_MODE = true
 
 # Sandbox
 

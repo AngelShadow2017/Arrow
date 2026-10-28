@@ -12,6 +12,8 @@ var NewVersionNotification = self
 var Checker
 
 func _ready() -> void:
+	if Settings.OFFLINE_WRITING_MODE:
+		return
 	Checker = HTTPRequest.new()
 	self.add_child(Checker)
 	Checker.request_completed.connect(self._new_version_check_request_completed)

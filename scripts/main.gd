@@ -14,6 +14,7 @@ signal mind_initialized()
 @onready var Configs = Configuration.ConfigHandler.new(self)
 @onready var Mind = CentralMind.Mind.new(self)
 @onready var Grid = $/root/Main/Editor/Center/Grid
+var WritingWorkspace
 
 # Quick Preferences (defaults)
 @export var _AUTO_INSPECT:bool = true
@@ -34,6 +35,13 @@ func _ready() -> void:
 	UI.setup_defaults_on_ui_and_quick_preferences()
 	UI.update_view_from_configuration(Configs.CONFIRMED)
 	Mind.post_initialization()
+	WritingWorkspace = preload("res://scripts/editor/writing_workspace.gd").new()
+	$Editor/Center.add_child(WritingWorkspace)
+	var autosave = Timer.new()
+	autosave.wait_time = 30.0
+	autosave.timeout.connect(Mind.autosave_writing_project)
+	add_child(autosave)
+	autosave.start()
 	self.mind_initialized.emit()
 	self.set_process_input(true)
 	# show about/welcome panel for browser version

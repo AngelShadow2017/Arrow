@@ -32,7 +32,7 @@ class ConfigHandler :
 		"app_local_dir_path": "user://", # (IMPORTANT: Only `user://` works in `HTML5` exports)
 		"window": null,
 		"panels": null,
-		"history_size": 0,
+		"history_size": 50,
 	}
 	# active configurations
 	var TEMPORARY = {} # middle/preview state (active but not confirmed yet)

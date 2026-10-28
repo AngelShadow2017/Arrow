@@ -389,10 +389,11 @@ class ProjectManager :
 			result += Settings.NONE_UNIQUE_FILENAME_AUTO_POSTFIX
 		return result
 		
-	func valid_unique_project_title_from(suggestion:String) -> String:
+	func valid_unique_project_title_from(suggestion:String, exclude_project_id:int = -1) -> String:
 		var all_project_titles = []
 		for project_id in _PROJECT_LIST.projects:
-			all_project_titles.append(_PROJECT_LIST.projects[project_id].title)
+			if project_id != exclude_project_id:
+				all_project_titles.append(_PROJECT_LIST.projects[project_id].title)
 		while( all_project_titles.has(suggestion) ):
 			suggestion += Settings.NONE_UNIQUE_FILENAME_AUTO_POSTFIX
 		return suggestion
@@ -414,7 +415,7 @@ class ProjectManager :
 		if project_uid < 0:
 			project_uid = _ACTIVE_PROJECT_UID
 		if is_project_listed(project_uid) && new_project_title.length() > 0:
-			_PROJECT_LIST.projects[project_uid].title = valid_unique_project_title_from(new_project_title)
+			_PROJECT_LIST.projects[project_uid].title = valid_unique_project_title_from(new_project_title, project_uid)
 			updated = true
 		if save_list == true:
 			save_project_list_file()

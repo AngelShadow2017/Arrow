@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Arrow"
+config/name="Arrow 剧情工作台"
 config/description="Game Narrative Design Tool"
 config/version="3.1.0"
 run/main_scene="res://main.tscn"
@@ -30,6 +30,10 @@ buses/default_bus_layout="res://assets/default_bus_layout.tres"
 
 [display]
 
+window/size/viewport_width=1440
+window/size/viewport_height=900
+window/size/min_width=1100
+window/size/min_height=720
 window/stretch/aspect="ignore"
 
 [input]

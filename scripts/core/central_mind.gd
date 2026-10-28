@@ -34,6 +34,7 @@ const NODE_INITIAL_NAME_PREFIX_FOR_SCENES = Settings.NODE_INITIAL_NAME_PREFIX_FO
 const NODE_INITIAL_NAME_PREFIX_FOR_MACROS = Settings.NODE_INITIAL_NAME_PREFIX_FOR_MACROS
 
 class Mind :
+	signal writing_workspace_changed()
 	
 	var Main
 	var Editor
@@ -134,10 +135,31 @@ class Mind :
 		"update_author",
 		"remove_author",
 		"update_chapter",
+		"writing_task_save",
+		"writing_task_remove",
+		"writing_scene_create",
+		"writing_scene_move",
+		"writing_lore_save",
+		"writing_lore_remove",
 	]
 	func central_event_dispatcher(request:String, args=null, _t_address=null, _tx_node=null) -> void:
 		print_debug("Mind:: Request : ", request, " (", args, ") ")
+		if request.begins_with("writing_") && _SNAPSHOT_INDEX_OF_PREVIEW >= 0:
+			show_error("快照预览中", "请先退出快照预览，再修改任务。")
+			return
 		match request:
+			"writing_task_save":
+				writing_task_save(args)
+			"writing_task_remove":
+				writing_task_remove(args)
+			"writing_scene_create":
+				writing_scene_create(args)
+			"writing_scene_move":
+				writing_scene_move(args)
+			"writing_lore_save":
+				writing_lore_save(args)
+			"writing_lore_remove":
+				_PROJECT.meta.writing_lore.erase(args)
 			"new_project":
 				match args:
 					"blank":
@@ -425,6 +447,7 @@ class Mind :
 			if history_checkpoint != false:
 				history_check_point()
 		Editor.call_deferred("set_project_save_status", ProMan.is_project_saved())
+		writing_workspace_changed.emit()
 		pass
 	
 	func capture_full_project_image(version: String) -> Dictionary:
@@ -632,6 +655,7 @@ class Mind :
 			var state = ProMan.get_project_last_view(-1, scene_id)
 			go_to_grid_view(state)
 		ProMan.set_project_last_open_scene(scene_id)
+		writing_workspace_changed.emit()
 		pass
 	
 	func load_scene(scene_id:int = -1, focus_node_id:int = -1) -> void:
@@ -1488,6 +1512,14 @@ class Mind :
 					"characters":
 						Inspector.Tab.Characters.call_deferred("unlist_characters", [resource_uid])
 				# and finally, erase the resource from datasets
+				if field == "scenes":
+					for entry in get_writing_lore().values():
+						entry.scenes.erase(resource_uid)
+				elif field == "characters":
+					for entry in get_writing_lore().values():
+						if entry.character_id == resource_uid:
+							entry.name = the_resource.name
+							entry.character_id = -1
 				_PROJECT.resources[field].erase(resource_uid)
 				return true # ... removed
 			else:
@@ -1721,7 +1753,7 @@ class Mind :
 				the_name += Settings.REUSED_CHARACTER_NAMES_AUTO_POSTFIX
 		return the_name
 	
-	func create_new_character() -> void:
+	func create_new_character() -> int:
 		var new_res_seed_id = create_new_resource_id()
 		var the_new_character = {
 			"name": create_character_name_from_id(new_res_seed_id),
@@ -1729,9 +1761,82 @@ class Mind :
 		}
 		write_resource("characters", the_new_character, new_res_seed_id, false)
 		Inspector.Tab.Characters.call_deferred("list_characters", ({ new_res_seed_id: the_new_character }))
-		pass
+		return new_res_seed_id
 	
-	func create_new_scene(is_macro:bool = false):
+	# Writing metadata lives in the project, so normal saves and undo include it.
+	func get_writing_tasks() -> Dictionary:
+		return _PROJECT.meta.get("writing_tasks", {})
+
+	func get_writing_scenes() -> Dictionary:
+		var scenes:Dictionary = {}
+		for scene_id in _PROJECT.resources.scenes:
+			var scene:Dictionary = _PROJECT.resources.scenes[scene_id]
+			if not scene.get("macro", false):
+				scenes[scene_id] = {"name": scene.name, "writing_task": scene.get("writing_task", "")}
+		return scenes
+
+	func writing_task_save(args:Dictionary) -> void:
+		var task_id:String = args.get("id", "")
+		if task_id.is_empty():
+			task_id = "quest_" + String.num_int64(create_new_resource_id())
+		if not _PROJECT.meta.has("writing_tasks"):
+			_PROJECT.meta["writing_tasks"] = {}
+		_PROJECT.meta.writing_tasks[task_id] = {
+			"name": args.name.strip_edges(),
+			"kind": args.kind,
+			"status": args.status,
+			"summary": args.summary,
+			"prerequisites": args.prerequisites,
+			"outcomes": args.outcomes,
+		}
+
+	func writing_task_remove(task_id:String) -> void:
+		# Removing a task never removes its scenes or dialogue.
+		_PROJECT.meta.writing_tasks.erase(task_id)
+		for scene in _PROJECT.resources.scenes.values():
+			if scene.get("writing_task", "") == task_id:
+				scene.erase("writing_task")
+		for entry in get_writing_lore().values():
+			entry.tasks.erase(task_id)
+
+	func get_writing_lore() -> Dictionary:
+		return _PROJECT.meta.get("writing_lore", {})
+
+	func writing_lore_save(args:Dictionary) -> void:
+		var entry_id:String = args.id
+		if entry_id.is_empty():
+			entry_id = "lore_" + String.num_int64(create_new_resource_id())
+		var entry:Dictionary = args.duplicate(true)
+		entry.erase("id")
+		if entry.kind == "人物":
+			if entry.character_id < 0:
+				entry.character_id = create_new_character()
+			update_resource(entry.character_id, {"name": entry.name}, "characters")
+		if not _PROJECT.meta.has("writing_lore"):
+			_PROJECT.meta["writing_lore"] = {}
+		_PROJECT.meta.writing_lore[entry_id] = entry
+
+	func autosave_writing_project() -> void:
+		if _SNAPSHOT_INDEX_OF_PREVIEW < 0 and ProMan.is_project_listed() and not ProMan.is_project_saved():
+			save_project()
+
+	func writing_scene_create(args:Dictionary) -> void:
+		var scene_id:int = create_new_scene(false)
+		if scene_id < 0:
+			return
+		var scene_name:String = args.name.strip_edges()
+		while Settings.FORCE_UNIQUE_NAMES_FOR_SCENES_AND_MACROS && is_resource_name_duplicate(scene_name, "scenes"):
+			scene_name += Settings.REUSED_SCENE_OR_MACRO_NAMES_AUTO_POSTFIX
+		update_resource(scene_id, {
+			"name": scene_name,
+			"writing_task": args.task_id,
+		}, "scenes")
+		scene_editorial_open(scene_id)
+
+	func writing_scene_move(args:Dictionary) -> void:
+		update_resource(args.scene_id, {"writing_task": args.task_id}, "scenes")
+
+	func create_new_scene(is_macro:bool = false) -> int:
 		var new_scene_seed_id = create_new_resource_id()
 		var new_scene_name = (
 			(Settings.MACRO_NAME_PREFIX if is_macro else Settings.SCENE_NAME_PREFIX)
@@ -1769,7 +1874,8 @@ class Mind :
 		else:
 			print_stack()
 			printerr("Unexpected Behavior! Unable to create entry node for new scene with type=%s", required_entry_type)
-		pass
+			return -1
+		return new_scene_seed_id
 	
 	func query_nodes(query_object:Dictionary) -> void:
 		if query_object.has_all(["what", "how"]):
@@ -2339,8 +2445,8 @@ class Mind :
 	
 	func register_project_and_save_from_open(project_title:String, project_filename:String) -> void:
 		if project_title.length() > 0 && project_filename.length() > 0 :
-			ProMan.register_project(project_title, project_filename, true)
-			reset_project_title(project_title) # just registered, no need for re-updating ProMan's list
+			var registered_id:int = ProMan.register_project(project_title, project_filename, true)
+			reset_project_title(ProMan.get_project_listing_by_id(registered_id).title)
 			reset_project_last_save_time()
 			# then saves it
 			ProMan.save_project(_PROJECT, false, (Settings.USE_DEPRECATED_BIN_SAVE != true))
@@ -2678,6 +2784,10 @@ class Mind :
 
 	# will handle actions defined in `Project Settings > Input Map` (sent by `Main`)
 	func handle_shortcuts(event) -> bool:
+		if event.is_action_pressed("arrow_history_undo") or event.is_action_pressed("arrow_history_redo"):
+			var focus = Main.get_viewport().gui_get_focus_owner()
+			if focus is LineEdit or focus is TextEdit:
+				return false
 		var handled = true
 		if event.is_action_pressed("arrow_save"):
 			save_project()

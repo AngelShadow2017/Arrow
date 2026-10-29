@@ -34,9 +34,12 @@ var drag_candidate:String = ""
 var dragging:String = ""
 var drag_origin:Vector2
 var drag_offset:Vector2
+var drag_size:Vector2
+var drag_from_floating:bool = false
 var resizing:String = ""
 var resize_origin:Rect2
 var split_edge:String = ""
+var split_start_size:float = 0.0
 var drop_edge:String = ""
 
 func _ready() -> void:
@@ -58,7 +61,10 @@ func _ready() -> void:
 	Main.Mind.Inspector.TheTabContainer.get_tab_bar().clip_tabs = true
 	Main.Mind.Inspector.TheTabContainer.tab_changed.connect(func(_index): queue_layout())
 	Main.Mind.Inspector.TheTabContainer.use_hidden_tabs_for_min_size = false
-	Main.Grid.snapping_distance = 24
+	# Anchors are initialized once: resetting them during layout temporarily resizes
+	# GraphEdit, which can move its scroll view while an unrelated panel is dragged.
+	Main.Grid.set_anchors_and_offsets_preset(Control.PRESET_TOP_LEFT)
+	Main.get_node("Editor/Center/MiniMap").set_anchors_and_offsets_preset(Control.PRESET_TOP_LEFT)
 	queue_layout()
 
 func default_states() -> Dictionary:
@@ -143,7 +149,7 @@ func _register_panel(key:String) -> void:
 func _build_group(edge:String) -> void:
 	var shell = PanelContainer.new()
 	shell.name = "DockHeader_" + edge
-	shell.add_theme_stylebox_override("panel", Look.box(Color("202938"), Color("303b4e"), 5, 2))
+	shell.add_theme_stylebox_override("panel", _chrome_style(2))
 	host.add_child(shell)
 	var row = HBoxContainer.new()
 	row.add_theme_constant_override("separation", 2)
@@ -162,11 +168,11 @@ func _build_group(edge:String) -> void:
 	_small_button(row, "close", "关闭当前面板", func(): _request_open(active[edge], false))
 	var splitter = ColorRect.new()
 	splitter.name = "DockSplitter_" + edge
-	splitter.color = Color("252f40")
+	splitter.color = Color("444444")
 	splitter.mouse_default_cursor_shape = Control.CURSOR_VSPLIT if edge == "bottom" else Control.CURSOR_HSPLIT
 	splitter.tooltip_text = "拖动分隔线调整面板大小"
 	splitter.mouse_entered.connect(func(): splitter.color = Look.ACCENT)
-	splitter.mouse_exited.connect(func(): splitter.color = Color("252f40"))
+	splitter.mouse_exited.connect(func(): splitter.color = Color("444444"))
 	host.add_child(splitter)
 	splitter.gui_input.connect(_splitter_input.bind(edge))
 	splitters[edge] = splitter
@@ -195,11 +201,10 @@ func _build_toolbar() -> void:
 		options.add_item(label)
 	options.id_pressed.connect(_preset_selected)
 	var top = Main.get_node("Editor/Top")
-	top.add_theme_stylebox_override("panel", Look.box(Color("171e2a"), Color("303b4e"), 0, 8))
-	Main.get_node("Editor/Bottom").add_theme_stylebox_override("panel", Look.box(Color("171e2a"), Color("303b4e"), 0, 6))
+	top.add_theme_stylebox_override("panel", _chrome_style(8))
+	Main.get_node("Editor/Bottom").add_theme_stylebox_override("panel", _chrome_style(6))
 	Main.get_node("Editor/Bottom/Bar/SceneTitle").add_theme_color_override("font_color", Look.MUTED)
 	Main.get_node("Editor/Top/Bar/AppMenu").text = "剧情工作台"
-	Main.get_node("Editor/Top/Bar/ProjectTitle").add_theme_color_override("font_color", Color("dce4f1"))
 	for item in ["Undo", "Redo"]:
 		Main.get_node("Editor/Top/Bar/History/Tools/" + item).icon = Look.icon(item.to_lower())
 	Main.get_node("Editor/Top/Bar/Save").icon = Look.icon("save", Look.ACCENT)
@@ -209,7 +214,7 @@ func _build_preview() -> void:
 	preview = PanelContainer.new()
 	preview.name = "DockDropPreview"
 	preview.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	preview.add_theme_stylebox_override("panel", Look.box(Color(0.32, 0.52, 0.9, 0.24), Look.ACCENT, 7, 12))
+	preview.add_theme_stylebox_override("panel", Look.box(Color(0.7, 0.7, 0.7, 0.24), Look.ACCENT, 7, 12))
 	preview_label = Label.new()
 	preview_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	preview_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
@@ -228,6 +233,9 @@ func _request_open(key:String, open:bool) -> void:
 		set_panel_open(key, open)
 	else:
 		Main.UI.set_panel_visibility(key, open)
+
+func _chrome_style(padding:int) -> StyleBox:
+	return Look.spaced_style(Settings.THEMES[Main.Configs.CONFIRMED.appearance_theme].resource, "panel", "PanelContainer", padding, 3)
 
 func _toggle_panel(key:String) -> void:
 	_request_open(key, not panels[key].visible or not states[key].open)
@@ -329,11 +337,9 @@ func arrange() -> void:
 	canvas_rect = Rect2(Vector2(area.position.x + left + (GAP if left > 0 else 0), area.position.y), Vector2(zone_rects.bottom.size.x, area.size.y - bottom - (GAP if bottom > 0 else 0)))
 	if focus_canvas or not focused_panel.is_empty():
 		canvas_rect = area
-	Main.Grid.set_anchors_and_offsets_preset(Control.PRESET_TOP_LEFT)
 	_set_rect(Main.Grid, canvas_rect)
 	Main.Grid.visible = focused_panel.is_empty()
 	var minimap = Main.get_node("Editor/Center/MiniMap")
-	minimap.set_anchors_and_offsets_preset(Control.PRESET_TOP_LEFT)
 	_set_rect(minimap, Rect2(canvas_rect.position + Vector2(16, canvas_rect.size.y - 112), Vector2(minf(210, canvas_rect.size.x * 0.28), 94)))
 	minimap.visible = focused_panel.is_empty() and Settings.CLASSIC_MINIMAP_ENABLED
 	for edge in EDGES:
@@ -429,6 +435,16 @@ func _group_input(event:InputEvent, edge:String) -> void:
 func _seed_drag(key:String, position:Vector2) -> void:
 	drag_candidate = key
 	drag_origin = position
+	drag_from_floating = states[key].zone == "floating" or focused_panel == key
+	var source:Rect2 = panels[key].get_global_rect()
+	if not drag_from_floating:
+		source.position = groups[states[key].zone].shell.global_position
+		source.size.y += HEADER
+	# Keep the actual pressed point, including when dragging the far end of a title.
+	drag_offset = position - source.position
+	drag_size = source.size
+	if not drag_from_floating:
+		drag_size.y = minf(drag_size.y, _area().size.y * 0.8)
 	_raise_panel(key)
 
 func _raise_panel(key:String) -> void:
@@ -444,6 +460,8 @@ func _resize_input(event:InputEvent, key:String) -> void:
 func _splitter_input(event:InputEvent, edge:String) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		split_edge = edge
+		drag_origin = event.global_position
+		split_start_size = zone_rects[edge].size.y if edge == "bottom" else zone_rects[edge].size.x
 
 func drop_zone_at(position:Vector2) -> String:
 	var area = _area()
@@ -464,8 +482,8 @@ func _input(event:InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		var position = event.position
 		if not split_edge.is_empty():
-			var area = _area()
-			widths[split_edge] = {"left": position.x - area.position.x, "right": area.end.x - position.x, "bottom": area.end.y - position.y}[split_edge]
+			var delta = position - drag_origin
+			widths[split_edge] = split_start_size + {"left": delta.x, "right": -delta.x, "bottom": -delta.y}[split_edge]
 			arrange()
 		elif not resizing.is_empty():
 			var rect = resize_origin
@@ -477,11 +495,8 @@ func _input(event:InputEvent) -> void:
 				dragging = drag_candidate
 				focused_panel = ""
 				states[dragging].zone = "floating"
-				var rect = floating_rect(dragging)
-				drag_offset = Vector2(minf(rect.size.x * 0.4, 140), 18)
 			if not dragging.is_empty():
-				var rect = floating_rect(dragging)
-				rect.position = position - drag_offset
+				var rect = Rect2(position - drag_offset, drag_size)
 				_store_float(dragging, rect)
 				arrange()
 				drop_edge = drop_zone_at(position)

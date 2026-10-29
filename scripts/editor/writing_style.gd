@@ -1,9 +1,9 @@
 # Shared visual language for the writing workspace; icons are code-native SVGs.
 extends RefCounted
 
-const ACCENT = Color("88adff")
-const MUTED = Color("8997ac")
-const COLORS = {"main": "96afff", "side": "e6b971", "scene": "79c6ce", "人物": "b9a3ee", "地点": "79c6ce", "阵营": "e6b971", "世界规则": "96afff", "事件": "e59aab"}
+const ACCENT = Color("dddddd")
+const MUTED = Color("999999")
+const COLORS = {"main": "dddddd", "side": "bbbbbb", "scene": "dddddd", "人物": "cccccc", "地点": "cccccc", "阵营": "cccccc", "世界规则": "cccccc", "事件": "cccccc"}
 const NODE_TYPES = ["condition", "content", "dialog", "entry", "frame", "generator", "hub", "interaction", "jump", "macro_use", "marker", "monolog", "randomizer", "sequencer", "tag_edit", "tag_match", "tag_pass", "user_input", "variable_update"]
 static var icons:Dictionary = {}
 
@@ -65,52 +65,65 @@ static func icon(kind:String, color:Color = MUTED) -> Texture2D:
 	icons[key] = texture
 	return texture
 
-static func make_theme(base:Theme, light:bool = false) -> Theme:
+# Reuse the original theme's fills, borders, selection and text colors.
+# Only spacing, corner geometry and typography belong to this workspace layer.
+static func spaced_style(base:Theme, key:String, type:String, padding:int, radius:int = 5) -> StyleBox:
+	var source:StyleBox
+	if base.has_stylebox(key, type):
+		source = base.get_stylebox(key, type)
+	elif ThemeDB.get_default_theme().has_stylebox(key, type):
+		source = ThemeDB.get_default_theme().get_stylebox(key, type)
+	else:
+		return null
+	var style:StyleBox = source.duplicate(true)
+	style.content_margin_left = padding
+	style.content_margin_right = padding
+	style.content_margin_top = padding
+	style.content_margin_bottom = padding
+	if style is StyleBoxFlat:
+		style.set_corner_radius_all(radius)
+	return style
+
+static func make_theme(base:Theme, _light:bool = false) -> Theme:
 	var theme:Theme = base.duplicate(true)
-	var surface = Color("f5f7fb") if light else Color("1c2330")
-	var field = Color("ffffff") if light else Color("151c27")
-	var border = Color("d8dfeb") if light else Color("303b4e")
-	var text = Color("263248") if light else Color("dce4f1")
-	var hover = Color("e8eef9") if light else Color("2a3548")
-	var selected = Color("dce7ff") if light else Color("2c4164")
 	var font = SystemFont.new()
 	font.font_names = PackedStringArray(["Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", "sans-serif"])
 	font.font_weight = 400
 	theme.default_font = font
 	theme.default_font_size = 14
-	for type in ["Label", "Button", "LineEdit", "TextEdit", "Tree", "ItemList", "OptionButton", "MenuButton", "CheckBox", "TabBar", "TabContainer"]:
-		theme.set_color("font_color", type, text)
-		theme.set_color("font_hover_color", type, text)
-		theme.set_color("font_disabled_color", type, MUTED)
-		theme.set_color("font_selected_color", type, text)
-		theme.set_color("font_unselected_color", type, MUTED)
-		theme.set_constant("outline_size", type, 0)
-	for type in ["Button", "OptionButton", "MenuButton"]:
-		for state in ["normal", "hover", "pressed", "disabled"]:
-			theme.set_stylebox(state, type, box(selected if state == "pressed" else (hover if state == "hover" else surface), border, 5, 6))
-		theme.set_stylebox("focus", type, box(Color.TRANSPARENT, ACCENT, 5, 0))
+	var styles = {
+		"Button": ["normal", "hover", "pressed", "disabled", "focus"],
+		"OptionButton": ["normal", "hover", "pressed", "disabled", "focus"],
+		"MenuButton": ["normal", "hover", "pressed", "disabled", "focus"],
+		"LineEdit": ["normal", "read_only", "focus"],
+		"TextEdit": ["normal", "read_only", "focus"],
+		"Tree": ["panel", "selected", "selected_focus", "cursor", "cursor_unfocused"],
+		"ItemList": ["panel", "selected", "selected_focus", "cursor", "cursor_unfocused"],
+		"TabBar": ["tab_selected", "tab_unselected", "tab_hovered", "tab_disabled"],
+		"TabContainer": ["tab_selected", "tab_unselected", "tab_hovered", "tab_disabled"],
+		"PanelContainer": ["panel"],
+		"PopupMenu": ["panel", "hover"],
+		"GraphNode": ["panel", "panel_selected", "titlebar", "titlebar_selected"],
+		"SaveButton": ["normal", "hover", "pressed", "disabled", "focus"],
+	}
+	for type in styles:
+		for key in styles[type]:
+			var padding = 6 if type in ["Button", "OptionButton", "MenuButton"] else 8
+			if type == "GraphNode":
+				padding = 12 if key.begins_with("panel") else 7
+			elif type == "SaveButton":
+				padding = 7
+			var style = spaced_style(base, key, type, padding)
+			if style != null:
+				theme.set_stylebox(key, type, style)
+	for type in ["Button", "OptionButton", "MenuButton", "TabBar", "TabContainer"]:
 		theme.set_constant("h_separation", type, 6)
+	for type in ["Button", "OptionButton", "MenuButton"]:
 		theme.set_constant("icon_max_width", type, 18)
-	theme.set_stylebox("panel", "PanelContainer", box(surface, border, 6, 8))
-	theme.set_stylebox("panel", "PopupMenu", box(surface, border, 7, 8))
-	theme.set_stylebox("hover", "PopupMenu", box(selected, Color.TRANSPARENT, 4, 6))
-	theme.set_color("font_color", "PopupMenu", text)
-	theme.set_color("font_hover_color", "PopupMenu", text)
-	theme.set_constant("v_separation", "PopupMenu", 8)
 	for type in ["HBoxContainer", "VBoxContainer"]:
 		theme.set_constant("separation", type, 8)
-	for type in ["LineEdit", "TextEdit"]:
-		theme.set_stylebox("normal", type, box(field, border, 5, 8))
-		theme.set_stylebox("read_only", type, box(field, border, 5, 8))
-		theme.set_stylebox("focus", type, box(field, ACCENT, 5, 8))
-		theme.set_color("caret_color", type, ACCENT)
-		theme.set_color("selection_color", type, selected)
-		theme.set_color("font_placeholder_color", type, MUTED)
 	theme.set_constant("line_spacing", "TextEdit", 6)
-	for type in ["Tree", "ItemList"]:
-		theme.set_stylebox("panel", type, box(field, Color.TRANSPARENT, 6, 6))
-		for state in ["selected", "selected_focus", "cursor", "cursor_unfocused"]:
-			theme.set_stylebox(state, type, box(selected, Color.TRANSPARENT, 4, 4))
+	for type in ["Tree", "ItemList", "PopupMenu"]:
 		theme.set_constant("v_separation", type, 8)
 		theme.set_constant("h_separation", type, 8)
 		theme.set_constant("icon_margin", type, 8)
@@ -118,31 +131,10 @@ static func make_theme(base:Theme, light:bool = false) -> Theme:
 	theme.set_constant("inner_item_margin_bottom", "Tree", 5)
 	theme.set_constant("item_margin", "Tree", 18)
 	theme.set_constant("draw_guides", "Tree", 1)
-	theme.set_color("guide_color", "Tree", border)
-	theme.set_color("relationship_line_color", "Tree", border)
-	for type in ["TabBar", "TabContainer"]:
-		for state in ["tab_selected", "tab_unselected", "tab_hovered", "tab_disabled"]:
-			var style = box(selected if state == "tab_selected" else (hover if state == "tab_hovered" else Color.TRANSPARENT), Color.TRANSPARENT, 4, 8)
-			if state == "tab_selected":
-				style.border_color = ACCENT
-				style.border_width_bottom = 2
-			theme.set_stylebox(state, type, style)
-		theme.set_constant("side_margin", type, 6)
-		theme.set_constant("h_separation", type, 6)
-	theme.set_stylebox("panel", "TabContainer", box(Color.TRANSPARENT, Color.TRANSPARENT, 0, 0))
-	theme.set_stylebox("panel", "GraphEdit", box(Color("111722"), Color.TRANSPARENT, 0, 0))
-	theme.set_color("grid_minor", "GraphEdit", Color("1b2330"))
-	theme.set_color("grid_major", "GraphEdit", Color("263142"))
-	theme.set_color("activity", "GraphEdit", ACCENT)
-	theme.set_stylebox("panel", "GraphNode", box(Color("202a3a"), border, 7, 12))
-	theme.set_stylebox("panel_selected", "GraphNode", box(Color("25344c"), ACCENT, 7, 12))
-	theme.set_stylebox("titlebar", "GraphNode", box(Color("2a364b"), Color.TRANSPARENT, 5, 7))
-	theme.set_stylebox("titlebar_selected", "GraphNode", box(Color("345280"), Color.TRANSPARENT, 5, 7))
+	theme.set_stylebox("panel", "TabContainer", StyleBoxEmpty.new())
 	theme.set_font_size("title_font_size", "GraphNode", 13)
 	for size in [1, 2, 3]:
 		theme.set_font_size("font_size", "LabelH%s" % size, 20 - size * 2)
 	for key in ["normal_font_size", "bold_font_size", "italics_font_size", "bold_italics_font_size", "mono_font_size"]:
 		theme.set_font_size(key, "RichTextLabelH3", 15)
-	for state in ["normal", "hover", "pressed", "disabled"]:
-		theme.set_stylebox(state, "SaveButton", box(selected if state == "normal" else hover, border, 5, 7))
 	return theme

@@ -274,7 +274,7 @@ func refresh() -> void:
 			var item = task_tree.create_item(group)
 			item.set_text(0, task.name)
 			item.set_text(1, task.status)
-			item.set_custom_color(1, Color("7dcbb0") if task.status == "完成" else Look.MUTED)
+			item.set_custom_color(1, Look.ACCENT if task.status == "完成" else Look.MUTED)
 			item.set_custom_font_size(1, 12)
 			item.set_selectable(1, false)
 			item.set_icon(0, Look.icon("folder"))

@@ -1,0 +1,99 @@
+# Simplified Chinese UI translation for Arrow
+msgid ""
+msgstr ""
+"Project-Id-Version: Arrow Writing\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Generator"
+msgstr "随机值生成"
+
+msgid "GENERATOR_CONSOLE_ACT_SKIP"
+msgstr "跳过"
+
+msgid "GENERATOR_CONSOLE_ACT_PROCEED"
+msgstr "继续"
+
+msgid "GENERATOR_INSPECTOR_FIELD_FOR"
+msgstr "目标变量"
+
+msgid "GENERATOR_INSPECTOR_APPLY_GLOBAL_VAR_FILTERS_TOOLTIP"
+msgstr "沿用变量面板的筛选条件。\n当前变量始终显示。"
+
+msgid "GENERATOR_INSPECTOR_FIELD_GENERATE"
+msgstr "生成方式"
+
+msgid "GENERATOR_INSPECTOR_FIELD_FROM"
+msgstr "从"
+
+msgid "GENERATOR_INSPECTOR_FIELD_TO"
+msgstr "到"
+
+msgid "GENERATOR_INSPECTOR_RANDOM_INT_NEG"
+msgstr "负数"
+
+msgid "GENERATOR_INSPECTOR_RANDOM_INT_EVEN"
+msgstr "偶数"
+
+msgid "GENERATOR_INSPECTOR_RANDOM_INT_ODD"
+msgstr "奇数"
+
+msgid "GENERATOR_INSPECTOR_RANDOM_ASCII_POOL"
+msgstr "候选字符"
+
+msgid "GENERATOR_INSPECTOR_RANDOM_ASCII_POOL_PLACEHOLDER"
+msgstr "ASCII 字符（英文字母及数字）"
+
+msgid "GENERATOR_INSPECTOR_RANDOM_ASCII_LENGTH"
+msgstr "长度"
+
+msgid "GENERATOR_INSPECTOR_FROM_STR_SET_POOL"
+msgstr "候选文本集合"
+
+msgid "GENERATOR_CONSOLE_UNSET_OR_INVALID_TARGET_VAR_MSG"
+msgstr "未定义"
+
+msgid "GENERATOR_CONSOLE_UNSET_OR_INVALID_METHOD_MSG"
+msgstr "未设置"
+
+msgid "GENERATOR_CONSOLE_UNSET_OR_INVALID_ARGUMENTS_MSG"
+msgstr "空值或无效"
+
+msgid "GENERATOR_CONSOLE_SKIPPED_MSG"
+msgstr "[已跳过]"
+
+msgid "GENERATOR_CONSOLE_OPERATION_STATE_FORMAT_STR"
+msgstr "{name}：`{original}` → {updated}"
+
+msgid "GENERATOR_INSPECTOR_NO_VARIABLE_TXT"
+msgstr "暂无可用变量"
+
+msgid "GENERATOR_INSPECTOR_STRST_DELIMITER_HINT_MSG"
+msgstr "* 使用 `%s` 分隔"
+
+msgid "GENERATOR_NODE_UNSET_OR_INVALID_TARGET_VAR_MSG"
+msgstr "未定义"
+
+msgid "GENERATOR_NODE_TARGET_VARIABLE_MSG_TEMPLATE"
+msgstr "{name}（{type}）"
+
+msgid "GENERATOR_NODE_UNSET_OR_INVALID_METHOD_MSG"
+msgstr "未设置"
+
+msgid "GENERATOR_NODE_UNSET_OR_INVALID_ARGUMENTS_MSG"
+msgstr "空值或无效"
+
+msgid "GENERATOR_METHOD_RANDOM_INTEGER"
+msgstr "随机整数"
+
+msgid "GENERATOR_METHOD_RANDOM_ASCII_STRING"
+msgstr "随机 ASCII 文本"
+
+msgid "GENERATOR_METHOD_FROM_SET_OF_STRINGS"
+msgstr "从候选文本中选取"
+
+msgid "GENERATOR_METHOD_RANDOM_BOOLEAN"
+msgstr "随机布尔值"

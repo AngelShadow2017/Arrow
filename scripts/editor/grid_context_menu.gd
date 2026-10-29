@@ -149,8 +149,8 @@ func filter_node_insert_list_items_view(query:String = "", try_read_filter_input
 	for item in _NODE_INSERT_LIST_FULL:
 		if (restricted_items.has(item) == false):
 			var item_details = _NODE_INSERT_LIST_FULL[item]
-			if show_all || (item_details.text.findn(query, 0) >= 0) :
-				NodeInsertList.add_item(item_details.text, item_details.icon)
+			if show_all || (tr(item_details.text).findn(query, 0) >= 0) :
+				NodeInsertList.add_item(tr(item_details.text), item_details.icon)
 				NodeInsertList.set_item_metadata(item_order, item_details)
 				item_order += 1 
 	NodeInsertList.sort_items_by_text()

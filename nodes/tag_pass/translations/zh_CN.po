@@ -1,0 +1,72 @@
+# Simplified Chinese UI translation for Arrow
+msgid ""
+msgstr ""
+"Project-Id-Version: Arrow Writing\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Tag Pass"
+msgstr "人物标签条件"
+
+msgid "TAG_PASS_CONSOLE_INVALID"
+msgstr "无效"
+
+msgid "TAG_PASS_CONSOLE_NOTHING_TO_CHECK"
+msgstr "没有可检查的标签"
+
+msgid "TAG_PASS_CONSOLE_FALSE"
+msgstr "假"
+
+msgid "TAG_PASS_CONSOLE_TRUE"
+msgstr "真"
+
+msgid "TAG_PASS_INSPECTOR_FIELD_CHARACTER"
+msgstr "人物"
+
+msgid "TAG_PASS_INSPECTOR_APPLY_GLOBAL_CHAR_FILTERS_TOOLTIP"
+msgstr "沿用人物面板的筛选条件。\n当前人物始终显示。"
+
+msgid "TAG_PASS_INSPECTOR_FIELD_CHECK"
+msgstr "检查方式"
+
+msgid "TAG_PASS_INSPECTOR_NOTHING_TO_CHECK"
+msgstr "没有可检查的标签"
+
+msgid "TAG_PASS_INSPECTOR_FIELD_KEY_PLACEHOLDER"
+msgstr "键"
+
+msgid "TAG_PASS_INSPECTOR_FIELD_VALUE_PLACEHOLDER"
+msgstr "值"
+
+msgid "TAG_PASS_INSPECTOR_OPT_KEY_ONLY"
+msgstr "只检查键"
+
+msgid "TAG_PASS_NODE_UNDEFINED"
+msgstr "未定义"
+
+msgid "TAG_PASS_NODE_NOTHING_TO_CHECK"
+msgstr "没有可检查的标签"
+
+msgid "TAG_PASS_NODE_FALSE"
+msgstr "假"
+
+msgid "TAG_PASS_NODE_TRUE"
+msgstr "真"
+
+msgid "TAG_PASS_INSPECTOR_NO_CHARACTER_TXT"
+msgstr "暂无可用人物"
+
+msgid "TAG_PASS_METHOD_ANY"
+msgstr "任一匹配（或）"
+
+msgid "TAG_PASS_METHOD_ALL"
+msgstr "全部匹配（且）"
+
+msgid "TAG_PASS_METHOD_HINT_ANY"
+msgstr "至少一个标签匹配即通过，不再继续检查。"
+
+msgid "TAG_PASS_METHOD_HINT_ALL"
+msgstr "所有标签都匹配时才通过。"

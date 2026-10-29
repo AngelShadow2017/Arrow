@@ -1,0 +1,126 @@
+# Simplified Chinese UI translation for Arrow
+msgid ""
+msgstr ""
+"Project-Id-Version: Arrow Writing\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Variable Update"
+msgstr "更新变量"
+
+msgid "VARIABLE_UPDATE_CONSOLE_ACT_DISMISS"
+msgstr "关闭"
+
+msgid "VARIABLE_UPDATE_CONSOLE_ACT_APPLY"
+msgstr "应用"
+
+msgid "VARIABLE_UPDATE_INSPECTOR_FIELD_UPDATE"
+msgstr "更新"
+
+msgid "VARIABLE_UPDATE_INSPECTOR_APPLY_GLOBAL_VAR_FILTERS_TOOLTIP"
+msgstr "沿用变量面板的筛选条件。\n当前变量始终显示。"
+
+msgid "VARIABLE_UPDATE_INSPECTOR_FIELD_BY"
+msgstr "运算方式"
+
+msgid "VARIABLE_UPDATE_INSPECTOR_FIELD_TO"
+msgstr "运算值"
+
+msgid "VARIABLE_UPDATE_INSPECTOR_PARAM_STR_PLACEHOLDER"
+msgstr "文本值"
+
+msgid "VARIABLE_UPDATE_INSPECTOR_PARAM_BOOL_TRUE"
+msgstr "真"
+
+msgid "VARIABLE_UPDATE_INSPECTOR_PARAM_BOOL_FALSE"
+msgstr "假"
+
+msgid "VARIABLE_UPDATE_CONSOLE_UNSET_OR_INVALID_MSG"
+msgstr "未设置"
+
+msgid "VARIABLE_UPDATE_INSPECTOR_OPERATOR_ITEM_TEXT_TEMPLATE"
+msgstr "{text}（{sign}）"
+
+msgid "VARIABLE_UPDATE_INSPECTOR_COMPARE_TO_SELF_INITIAL"
+msgstr "自身初始值"
+
+msgid "VARIABLE_UPDATE_INSPECTOR_NO_VARIABLE"
+msgstr "暂无可用变量"
+
+msgid "VARIABLE_UPDATE_NODE_UNSET_OR_INVALID_MSG"
+msgstr "未设置"
+
+msgid "VARIABLE_UPDATE_OP_SET_NUM"
+msgstr "赋值"
+
+msgid "VARIABLE_UPDATE_OP_ADD"
+msgstr "加法"
+
+msgid "VARIABLE_UPDATE_OP_SUB"
+msgstr "减法"
+
+msgid "VARIABLE_UPDATE_OP_DIV"
+msgstr "除法"
+
+msgid "VARIABLE_UPDATE_OP_REM"
+msgstr "取余"
+
+msgid "VARIABLE_UPDATE_OP_MUL"
+msgstr "乘法"
+
+msgid "VARIABLE_UPDATE_OP_EXP"
+msgstr "乘方"
+
+msgid "VARIABLE_UPDATE_OP_ABS"
+msgstr "绝对值"
+
+msgid "VARIABLE_UPDATE_OP_SET_STR"
+msgstr "设置"
+
+msgid "VARIABLE_UPDATE_OP_STC"
+msgstr "设置为单词首字母大写"
+
+msgid "VARIABLE_UPDATE_OP_STL"
+msgstr "设置为小写"
+
+msgid "VARIABLE_UPDATE_OP_STU"
+msgstr "设置为大写"
+
+msgid "VARIABLE_UPDATE_OP_INS"
+msgstr "追加到右侧"
+
+msgid "VARIABLE_UPDATE_OP_INB"
+msgstr "添加到左侧"
+
+msgid "VARIABLE_UPDATE_OP_RMC"
+msgstr "移除左侧文本"
+
+msgid "VARIABLE_UPDATE_OP_RML"
+msgstr "移除左侧文本（忽略大小写）"
+
+msgid "VARIABLE_UPDATE_OP_RMR"
+msgstr "移除右侧文本"
+
+msgid "VARIABLE_UPDATE_OP_RMI"
+msgstr "移除右侧文本（忽略大小写）"
+
+msgid "VARIABLE_UPDATE_OP_RPL"
+msgstr "替换"
+
+msgid "VARIABLE_UPDATE_OP_RPL_HINT"
+msgstr "用竖线分隔查找和替换文本，例如 `find|replace`。"
+
+msgid "VARIABLE_UPDATE_OP_RPI"
+msgstr "替换（忽略大小写）"
+
+msgid "VARIABLE_UPDATE_OP_RPI_HINT"
+msgstr "用竖线分隔查找和替换文本，例如 `find|replace`。"
+
+msgid "VARIABLE_UPDATE_OP_SET_BOOL"
+msgstr "设置"
+
+msgid "VARIABLE_UPDATE_OP_NEG"
+msgstr "取反"

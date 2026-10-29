@@ -153,7 +153,7 @@ func update_parameters(node_id:int, node:Dictionary, node_map:Dictionary, sub_in
 	NodeTypeDisplay.set_deferred("tooltip_text", NODE_TYPES_LIST_CACHE[node.type].text)
 	NodeTypeDisplay.set_deferred("icon", NODE_TYPES_LIST_CACHE[node.type].icon)
 	NodeNameEdit.set_deferred("text", node.name)
-	NodeUid.set_deferred("tooltip_text", (RAW_UID_TIP_TEMPLATE % node_id) + tr("TYPE_INSPECTOR_RAW_UID_HINT"))
+	NodeUid.set_deferred("tooltip_text", (tr(RAW_UID_TIP_TEMPLATE) % node_id) + tr("TYPE_INSPECTOR_RAW_UID_HINT"))
 	# skip
 	var is_node_skip = ( true if (node_map.has("skip") && node_map.skip == true ) else false )
 	toggle_node_skip(is_node_skip, false)
@@ -264,7 +264,7 @@ func update_referrers_list(node_id:int = _CURRENT_INSPECTED_NODE_RESOURCE_ID) ->
 			if NodeReferrersFilterForScene.is_pressed() == false || Main.Mind.scene_owns_node(user_node_id) != null:
 				var user_node = _CURRENT_INSPECTED_NODE_REFERRERS[user_node_id]
 				_CURRENT_INSPECTED_NODE_REFERRERS_IDS.append(user_node_id)
-				var user_node_name = user_node.name if user_node.has("name") else ("Unnamed - %s" % user_node_id)
+				var user_node_name = user_node.name if user_node.has("name") else (tr("Unnamed - %s") % user_node_id)
 				NodeReferrersListPopUp.add_item(user_node_name, user_node_id)
 				NodeReferrersListPopUp.set_item_metadata(item_index, user_node_id)
 				item_index += 1

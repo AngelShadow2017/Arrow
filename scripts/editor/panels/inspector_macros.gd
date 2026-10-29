@@ -317,7 +317,7 @@ func update_macro_editorial_state(macro_id:int = -1) -> void:
 	if macro_id >= 0 && _LISTED_MACROS_BY_ID.has(macro_id):
 		_SELECTED_MACRO_BEING_EDITED_ID = macro_id
 		var the_macro = _LISTED_MACROS_BY_ID[macro_id]
-		MacroRawUid.set_deferred("tooltip_text", (RAW_UID_TIP_TEMPLATE % macro_id) + tr("TYPE_INSPECTOR_RAW_UID_HINT"))
+		MacroRawUid.set_deferred("tooltip_text", (tr(RAW_UID_TIP_TEMPLATE) % macro_id) + tr("TYPE_INSPECTOR_RAW_UID_HINT"))
 		MacroEditorName.set_text(the_macro.name)
 		# MacroEditorBox.set("visible", true) # moved to `smartly_update_tools`
 		# this may be called by other scripts, so let's reselect the open macro
@@ -364,7 +364,7 @@ func update_instance_pagination(macro_id:int = -1) -> void:
 			if MacroInstanceFilterForScene.is_pressed() == false || Main.Mind.scene_owns_node(user_node_id) != null:
 				var user_node = _SELECTED_MACRO_USERS[user_node_id]
 				_SELECTED_MACRO_USER_IDS.append(user_node_id)
-				var user_node_name = user_node.name if user_node.has("name") else ("Unnamed - %s" % user_node_id)
+				var user_node_name = user_node.name if user_node.has("name") else (tr("Unnamed - %s") % user_node_id)
 				MacroInstanceGoToButtonPopup.add_item(user_node_name, user_node_id)
 				MacroInstanceGoToButtonPopup.set_item_metadata(item_index, user_node_id)
 				item_index += 1

@@ -256,7 +256,7 @@ func append_char_tag_to_box(char_id: int, key: String, value: String) -> void:
 	the_popup.set_item_disabled(0, true)
 	the_popup.add_separator("", 0)
 	the_popup.add_item("Edit", 1)
-	the_popup.add_item("Unset", 2)
+	the_popup.add_item("Remove Tag", 2)
 	the_popup.id_pressed.connect(self.take_char_tag_action.bind(char_id, key, value), CONNECT_DEFERRED)
 	# ...
 	CharTagsInspectorTagBox.add_child(the_tag)

@@ -118,7 +118,7 @@ func update_query_results(nodes_dataset:Dictionary = {}) -> void:
 					tr("QUERY_MATCH_ITEM_TEXT_TEMPLATE")
 					.format({
 						"name": the_node.name,
-						"capitalized_type": the_node.type.capitalize()
+						"capitalized_type": tr(the_node.type.capitalize())
 					})
 				),
 				node_id

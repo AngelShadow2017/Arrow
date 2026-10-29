@@ -1,0 +1,36 @@
+# Simplified Chinese UI translation for Arrow
+msgid ""
+msgstr ""
+"Project-Id-Version: Arrow Writing\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Entry"
+msgstr "剧情入口"
+
+msgid "ENTRY_INSPECTOR_FIELD_PLAQUE"
+msgstr "入口标识"
+
+msgid "ENTRY_INSPECTOR_FIELD_ACTIVE_TOOLTIP"
+msgstr "项目及各个场景都需要一个有效入口，才能正常试玩。"
+
+msgid "ENTRY_INSPECTOR_FIELD_ACTIVE_FOR"
+msgstr "设为入口"
+
+msgid "ENTRY_INSPECTOR_OPT_PROJECT"
+msgstr "项目"
+
+msgid "ENTRY_INSPECTOR_OPT_SCENE"
+msgstr "场景"
+
+msgid "ENTRY_CONSOLE_INVALID_TXT"
+msgstr "无效"
+
+msgid "ENTRY_CONSOLE_NO_PLAQUE_TXT"
+msgstr "未填写入口标识"
+
+msgid "ENTRY_NODE_INVALID_OR_UNSET_PLAQUE_TXT"
+msgstr "未设置"

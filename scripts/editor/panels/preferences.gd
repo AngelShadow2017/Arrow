@@ -67,7 +67,7 @@ func refresh_language_options() -> void:
 	var loaded_locals = TranslationServer.get_loaded_locales()
 	for locale in loaded_locals:
 		var language_item_text = LANGUAGE_ITEM_TEXT_TEMPLATE.format({
-			"name": tr( TranslationServer.get_locale_name(locale) ),
+			"name": {"zh_CN": "简体中文", "en": "英语", "fa": "波斯语"}.get(locale, tr(TranslationServer.get_locale_name(locale))),
 			"code": locale,
 		})
 		FIELDS.language.add_item(language_item_text, idx)
@@ -84,7 +84,7 @@ func select_language_selector_for(locale = TranslationServer.get_locale()) -> in
 			return idx
 	return -1
 
-func reset_language(by_locale:String = "en") -> void:
+func reset_language(by_locale:String = "zh_CN") -> void:
 	TranslationServer.set_locale(by_locale)
 	select_language_selector_for(by_locale)
 	pass

@@ -1,0 +1,33 @@
+# Simplified Chinese UI translation for Arrow
+msgid ""
+msgstr ""
+"Project-Id-Version: Arrow Writing\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Frame"
+msgstr "分组框"
+
+msgid "FRAME_INSPECTOR_FIELD_COLOR"
+msgstr "颜色"
+
+msgid "FRAME_INSPECTOR_FIELD_LABEL"
+msgstr "标签文字"
+
+msgid "FRAME_INSPECTOR_FIELD_WIDTH"
+msgstr "宽度"
+
+msgid "FRAME_INSPECTOR_FIELD_HEIGHT"
+msgstr "高度"
+
+msgid "FRAME_CONSOLE_LABEL_UNSET_MSG"
+msgstr "未命名标签"
+
+msgid "FRAME_CONSOLE_NO_NOTES_MSG"
+msgstr "分组框暂无补充信息。"
+
+msgid "FRAME_NODE_NO_LABEL_MSG"
+msgstr "未填写标签"

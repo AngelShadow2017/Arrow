@@ -36,7 +36,14 @@ func refresh_prompt_for(
 	_CURRENT_EXTRA_ARGUMENTS = extra_arguments.duplicate(true)
 	for option in dialog_options:
 		if option in self:
-			self.set(option, dialog_options[option])
+			if option == "filters":
+				var filters:PackedStringArray = []
+				for filter in dialog_options[option]:
+					var parts = filter.split(";", true, 1)
+					filters.append(parts[0] + (";" + tr(parts[1]) if parts.size() > 1 else ""))
+				self.filters = filters
+			else:
+				self.set(option, dialog_options[option])
 	if display:
 		self.call_deferred("set_exclusive", true) # do not close by clicking outside the panel
 		self.call_deferred("popup") # `display` and refresh

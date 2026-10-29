@@ -1,0 +1,24 @@
+# Simplified Chinese UI translation for Arrow
+msgid ""
+msgstr ""
+"Project-Id-Version: Arrow Writing\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Marker"
+msgstr "创作标记"
+
+msgid "MARKER_INSPECTOR_FIELD_COLOR"
+msgstr "颜色"
+
+msgid "MARKER_INSPECTOR_FIELD_LABEL"
+msgstr "标签文字"
+
+msgid "MARKER_CONSOLE_LABEL_UNSET_MSG"
+msgstr "未命名标签"
+
+msgid "MARKER_CONSOLE_NO_NOTES_MSG"
+msgstr "[暂无备注]"

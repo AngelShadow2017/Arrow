@@ -1,0 +1,27 @@
+# Simplified Chinese UI translation for Arrow
+msgid ""
+msgstr ""
+"Project-Id-Version: Arrow Writing\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Sequencer"
+msgstr "顺序执行"
+
+msgid "SEQUENCER_CONSOLE_ACT_SKIP"
+msgstr "跳过"
+
+msgid "SEQUENCER_CONSOLE_ACT_RUN"
+msgstr "执行"
+
+msgid "SEQUENCER_INSPECTOR_FIELD_SEQ_LENGTH"
+msgstr "执行序列长度"
+
+msgid "SEQUENCER_INSPECTOR_HANDLE_WITH_CARE_EXTRA_INFO"
+msgstr "请谨慎使用顺序执行节点。\n\n虽然节点按端口顺序启动相连的节点，但实际执行可能排队或并行，取决于节点类型和运行环境，分支顺序不保证与直觉一致。\n\n这可能导致变量检查和更新顺序不符预期、多个节点同时等待玩家输入、正文显示顺序异常等问题。\n\n被跳过的顺序执行节点只执行最后一个已连接端口。"
+
+msgid "SEQUENCER_INSPECTOR_HANDLE_WITH_CARE"
+msgstr "* 请谨慎使用"

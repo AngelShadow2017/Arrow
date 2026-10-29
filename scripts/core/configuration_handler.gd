@@ -28,7 +28,7 @@ class ConfigHandler :
 	# CAUTION! this is the CONSTANT default configuration, used in config file generation, resets, etc.
 	const DEFAULT = {
 		"appearance_theme": 0,
-		"language": "en",
+		"language": "zh_CN",
 		"app_local_dir_path": "user://", # (IMPORTANT: Only `user://` works in `HTML5` exports)
 		"window": null,
 		"panels": null,

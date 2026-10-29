@@ -105,6 +105,12 @@ class ProjectManager :
 		_ACTIVE_PROJECT_UID = -1
 		_IS_ACTIVE_PROJECT_SAVED = true
 		var untitled_project = Embedded.Data.Untitled_Project.duplicate(true)
+		untitled_project.title = tr("Untitled Adventure")
+		untitled_project.meta.authors[0][0] = tr(Settings.ANONYMOUS_AUTHOR_INFO)
+		untitled_project.resources.scenes[0].name = tr("Initial Scene")
+		untitled_project.resources.nodes[1].data.plaque = tr("Start")
+		untitled_project.resources.nodes[2].data.title = tr("Hello World!")
+		untitled_project.resources.nodes[2].data.content = tr("Let's begin our adventure.")
 		if Settings.FORCE_SNOWFLAKE_UID_FOR_NEW_PROJECTS == true:
 			untitled_project.meta.epoch = Flake.Snow._unsafe_unix_now_millisecond()
 		print_debug("holding untitled (blank) project: ", untitled_project.meta)

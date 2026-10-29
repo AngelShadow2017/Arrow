@@ -96,7 +96,7 @@ func refresh_variable_type_selection() -> void:
 		var the_type = Settings.VARIABLE_TYPES[type]
 		VariablesTypeSelect.add_item(
 			VARIABLE_TYPE_IN_SELECTION_TEXT_TEMPLATE.format({
-				"name": the_type.name,
+				"name": tr(the_type.name),
 				"type": type
 			}),
 			type_id
@@ -232,7 +232,7 @@ func load_variable_in_editor(variable_id) -> void:
 	_SELECTED_VARIABLE_BEING_EDITED_ID = variable_id
 	var the_variable = _LISTED_VARIABLES_BY_ID[variable_id]
 	switch_variable_initial_value_sub_editor(the_variable.type)
-	VariableRawUid.set_deferred("tooltip_text", (RAW_UID_TIP_TEMPLATE % variable_id) + tr("TYPE_INSPECTOR_RAW_UID_HINT"))
+	VariableRawUid.set_deferred("tooltip_text", (tr(RAW_UID_TIP_TEMPLATE) % variable_id) + tr("TYPE_INSPECTOR_RAW_UID_HINT"))
 	VariableEditorName.set_text(the_variable.name)
 	set_variable_initial_value_sub_editor(the_variable.type, the_variable.init)
 	# can't it be removed ? not if it's used by other resources
@@ -270,7 +270,7 @@ func update_usage_pagination(variable_id:int) -> void:
 			if VariableReferencesFilterForScene.is_pressed() == false || Main.Mind.scene_owns_node(user_node_id) != null:
 				var user_node = _SELECTED_VARIABLE_USERS[user_node_id]
 				_SELECTED_VARIABLE_USER_IDS.append(user_node_id)
-				var user_node_name = user_node.name if user_node.has("name") else ("Unnamed - %s" % user_node_id)
+				var user_node_name = user_node.name if user_node.has("name") else (tr("Unnamed - %s") % user_node_id)
 				VariableReferencesGoToButtonPopup.add_item(user_node_name, user_node_id)
 				VariableReferencesGoToButtonPopup.set_item_metadata(item_index, user_node_id)
 				item_index += 1

@@ -245,7 +245,7 @@ func request_remove_character(resource_id:int = -1) -> void:
 func load_character_in_editor(character_id:int) -> void:
 	_SELECTED_CHARACTER_BEING_EDITED_ID = character_id
 	var the_character = _LISTED_CHARACTERS_BY_ID[character_id]
-	CharacterRawUid.set_deferred("tooltip_text", (RAW_UID_TIP_TEMPLATE % character_id) + tr("TYPE_INSPECTOR_RAW_UID_HINT"))
+	CharacterRawUid.set_deferred("tooltip_text", (tr(RAW_UID_TIP_TEMPLATE) % character_id) + tr("TYPE_INSPECTOR_RAW_UID_HINT"))
 	CharacterEditorName.set_text(the_character.name)
 	CharacterColorPickerButton.set("color", Helpers.Utils.rgba_hex_to_color(the_character.color))
 	# can't it be removed ? not if it's used by other resources
@@ -343,7 +343,7 @@ func append_tag_to_box(key: String, value: String) -> void:
 	the_popup.set_item_disabled(0, true)
 	the_popup.add_separator("", 0)
 	the_popup.add_item("Edit", 1)
-	the_popup.add_item("Unset", 2)
+	the_popup.add_item("Remove Tag", 2)
 	the_popup.id_pressed.connect(self.take_tag_action.bind(key, value), CONNECT_DEFERRED)
 	# ...
 	TagBox.add_child(the_tag)
@@ -382,7 +382,7 @@ func update_appearance_pagination(character_id:int) -> void:
 			if CharacterAppearanceFilterForScene.is_pressed() == false || Main.Mind.scene_owns_node(user_node_id) != null:
 				var user_node = _SELECTED_CHARACTER_USERS[user_node_id]
 				_SELECTED_CHARACTER_USER_IDS.append(user_node_id)
-				var user_node_name = user_node.name if user_node.has("name") else ("Unnamed - %s" % user_node_id)
+				var user_node_name = user_node.name if user_node.has("name") else (tr("Unnamed - %s") % user_node_id)
 				CharacterAppearanceGoToButtonPopup.add_item(user_node_name, user_node_id)
 				CharacterAppearanceGoToButtonPopup.set_item_metadata(item_index, user_node_id)
 				item_index += 1

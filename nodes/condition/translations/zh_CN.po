@@ -1,0 +1,114 @@
+# Simplified Chinese UI translation for Arrow
+msgid ""
+msgstr ""
+"Project-Id-Version: Arrow Writing\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Condition"
+msgstr "条件判断"
+
+msgid "CONDITION_CONSOLE_FALSE"
+msgstr "假"
+
+msgid "CONDITION_CONSOLE_TRUE"
+msgstr "真"
+
+msgid "CONDITION_INSPECTOR_CHECK_FOR_VAR"
+msgstr "检查变量"
+
+msgid "CONDITION_INSPECTOR_APPLY_GLOBAL_VAR_FILTERS_TOOLTIP"
+msgstr "沿用变量面板的筛选条件。\n当前节点使用的变量始终显示。"
+
+msgid "CONDITION_INSPECTOR_IF"
+msgstr "如果"
+
+msgid "CONDITION_INSPECTOR_COMPARING_TO"
+msgstr "比较对象"
+
+msgid "CONDITION_INSPECTOR_FALSE"
+msgstr "假"
+
+msgid "CONDITION_INSPECTOR_TRUE"
+msgstr "真"
+
+msgid "CONDITION_INSPECTOR_RHS_STR_PLACEHOLDER"
+msgstr "文本值"
+
+msgid "CONDITION_NODE_FALSE"
+msgstr "假"
+
+msgid "CONDITION_NODE_TRUE"
+msgstr "真"
+
+msgid "CONDITION_CONSOLE_UNSET_DATA_ERR"
+msgstr "未设置"
+
+msgid "CONDITION_INSPECTOR_OPERATOR_ITEM_TEXT_TEMPLATE"
+msgstr "{text}（{sign}）"
+
+msgid "CONDITION_INSPECTOR_COMPARE_TO_SELF_INITIAL"
+msgstr "自身初始值"
+
+msgid "CONDITION_INSPECTOR_NO_VARIABLE"
+msgstr "暂无可用变量"
+
+msgid "CONDITION_NODE_UNSET_OR_INVALID"
+msgstr "未设置"
+
+msgid "CONDITION_OP_EQ_NUM"
+msgstr "等于"
+
+msgid "CONDITION_OP_NQ_NUM"
+msgstr "不等于"
+
+msgid "CONDITION_OP_GT"
+msgstr "大于"
+
+msgid "CONDITION_OP_GTE"
+msgstr "大于或等于"
+
+msgid "CONDITION_OP_LS"
+msgstr "小于"
+
+msgid "CONDITION_OP_LSE"
+msgstr "小于或等于"
+
+msgid "CONDITION_OP_RGX"
+msgstr "匹配正则表达式"
+
+msgid "CONDITION_OP_CT"
+msgstr "包含文本"
+
+msgid "CONDITION_OP_CTS"
+msgstr "包含文本（区分大小写）"
+
+msgid "CONDITION_OP_BGN"
+msgstr "开头为"
+
+msgid "CONDITION_OP_END"
+msgstr "结尾为"
+
+msgid "CONDITION_OP_EQL"
+msgstr "长度相等"
+
+msgid "CONDITION_OP_LNG"
+msgstr "长度更长"
+
+msgid "CONDITION_OP_SHR"
+msgstr "长度更短"
+
+msgid "CONDITION_OP_EQ_BOOL"
+msgstr "相同"
+
+msgid "CONDITION_OP_NQ_BOOL"
+msgstr "不同"
+
+msgid "CONDITION_STATEMENT_RHS_IS_LHS_INIT"
+msgstr "自身初始值（`%s`）"
+
+msgid "CONDITION_RHS_INVALID"
+msgstr "[无效]"

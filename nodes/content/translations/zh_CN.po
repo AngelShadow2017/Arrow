@@ -1,0 +1,45 @@
+# Simplified Chinese UI translation for Arrow
+msgid ""
+msgstr ""
+"Project-Id-Version: Arrow Writing\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Content"
+msgstr "场景描述"
+
+msgid "CONTENT_CONSOLE_CONTINUE_BTN"
+msgstr "继续"
+
+msgid "CONTENT_INSPECTOR_FIELD_TITLE"
+msgstr "标题"
+
+msgid "CONTENT_INSPECTOR_FIELD_CONTENT"
+msgstr "正文"
+
+msgid "CONTENT_INSPECTOR_FIELD_BRIEF"
+msgstr "摘要长度"
+
+msgid "CONTENT_INSPECTOR_BRIEF_PICK_BTN_TOOLTIP"
+msgstr "将光标之前的正文长度设为摘要长度。"
+
+msgid "CONTENT_INSPECTOR_OPT_AUTO_PLAY"
+msgstr "自动播放"
+
+msgid "CONTENT_INSPECTOR_OPT_CLEAR_PAGE"
+msgstr "清空当前页"
+
+msgid "CONTENT_CONSOLE_UNSET_TEXT"
+msgstr "暂无正文。"
+
+msgid "CONTENT_CONSOLE_UNSET_TITLE"
+msgstr "未命名"
+
+msgid "CONTENT_CONSOLE_UNSET_BRIEF"
+msgstr "暂无摘要。"
+
+msgid "CONTENT_NODE_UNSET_TITLE"
+msgstr "未命名"

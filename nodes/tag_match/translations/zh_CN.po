@@ -1,0 +1,78 @@
+# Simplified Chinese UI translation for Arrow
+msgid ""
+msgstr ""
+"Project-Id-Version: Arrow Writing\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Tag Match"
+msgstr "匹配人物标签"
+
+msgid "TAG_MATCH_CONSOLE_ACT_EOL"
+msgstr "结束"
+
+msgid "TAG_MATCH_CONSOLE_ACT_MATCH"
+msgstr "匹配"
+
+msgid "TAG_MATCH_INSPECTOR_FIELD_CHARACTER"
+msgstr "人物"
+
+msgid "TAG_MATCH_INSPECTOR_APPLY_GLOBAL_CHAR_FILTERS_TOOLTIP"
+msgstr "沿用人物面板的筛选条件。\n当前人物始终显示。"
+
+msgid "TAG_MATCH_INSPECTOR_FIELD_KEY"
+msgstr "标签键"
+
+msgid "TAG_MATCH_INSPECTOR_FIELD_KEY_PLACEHOLDER"
+msgstr "必填且不能为空"
+
+msgid "TAG_MATCH_INSPECTOR_FIELD_PATTERNS"
+msgstr "匹配规则"
+
+msgid "TAG_MATCH_INSPECTOR_OPT_REGEX"
+msgstr "正则表达式"
+
+msgid "TAG_MATCH_CONSOLE_INVALID_OR_UNSET_KEY"
+msgstr "标签键无效"
+
+msgid "TAG_MATCH_CONSOLE_NO_MATCH"
+msgstr "未匹配，剧情结束"
+
+msgid "TAG_MATCH_INSPECTOR_NO_CHARACTER_TXT"
+msgstr "暂无可用人物"
+
+msgid "TAG_MATCH_INSPECTOR_MENU_APPEND_NEW_PATTERN"
+msgstr "添加匹配规则"
+
+msgid "TAG_MATCH_INSPECTOR_MENU_EXTRACT_SELECTED"
+msgstr "提取选中规则"
+
+msgid "TAG_MATCH_INSPECTOR_MENU_REPLACE_SELECTED"
+msgstr "替换选中规则"
+
+msgid "TAG_MATCH_INSPECTOR_MENU_REMOVE_SELECTED"
+msgstr "移除选中规则"
+
+msgid "TAG_MATCH_INSPECTOR_MENU_SORT_PATTERNS_AZ"
+msgstr "按文本排序规则"
+
+msgid "TAG_MATCH_INSPECTOR_MENU_MOVE_SELECTED_TOP"
+msgstr "将选中项移至顶部"
+
+msgid "TAG_MATCH_INSPECTOR_MENU_MOVE_SELECTED_END"
+msgstr "将选中项移至末尾"
+
+msgid "TAG_MATCH_INSPECTOR_MENU_MOVE_SELECTED_UP"
+msgstr "上移选中项"
+
+msgid "TAG_MATCH_INSPECTOR_MENU_MOVE_SELECTED_DOWN"
+msgstr "下移选中项"
+
+msgid "TAG_MATCH_NODE_INVALID_OR_UNSET_KEY"
+msgstr "标签键无效"
+
+msgid "TAG_MATCH_INVALID_CHAR_NAME"
+msgstr "人物无效"

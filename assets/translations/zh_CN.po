@@ -1,0 +1,1818 @@
+# Simplified Chinese UI translation for Arrow
+msgid ""
+msgstr ""
+"Project-Id-Version: Arrow Writing\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Arrow"
+msgstr "Arrow 剧情工作台"
+
+msgid "[v3.x]"
+msgstr "[第 3 版]"
+
+msgid "Website"
+msgstr "官方网站"
+
+msgid "Repository"
+msgstr "源码仓库"
+
+msgid "Documentation"
+msgstr "使用文档"
+
+msgid "Hello"
+msgstr "欢迎"
+
+msgid "WELCOME_MESSAGE"
+msgstr "[b]欢迎使用 Arrow 剧情工作台[/b]\n\nArrow 是用于游戏叙事设计和交互式非线性故事创作的开源工具。\n\n桌面版项目保存在本地工作目录。导出项目请使用：\n[indent]属性面板 → 项目 → 导出[/indent]\n\n网页版使用浏览器存储，数据仅保留在当前设备。清理浏览器存储前请先导出备份。\n\n更多信息可查阅官方网站和源码仓库。\n\nMor. H. Golkar 与贡献者"
+
+msgid "Copyright"
+msgstr "版权信息"
+
+msgid "New"
+msgstr "新建"
+
+msgid "Open"
+msgstr "打开"
+
+msgid "Cancel"
+msgstr "取消"
+
+msgid "Close"
+msgstr "关闭"
+
+msgid "Preferences"
+msgstr "偏好设置"
+
+msgid "Dismiss"
+msgstr "关闭"
+
+msgid "Confirm"
+msgstr "确认"
+
+msgid "User Interface"
+msgstr "界面"
+
+msgid "Theme"
+msgstr "主题"
+
+msgid "Language"
+msgstr "语言"
+
+msgid "Data Management"
+msgstr "数据管理"
+
+msgid "Work Directory"
+msgstr "工作目录"
+
+msgid "[Working Directory Path]"
+msgstr "[工作目录路径]"
+
+msgid "Select"
+msgstr "选择"
+
+msgid "Reset"
+msgstr "重置"
+
+msgid "History (Undo/Redo)"
+msgstr "历史记录（撤销 / 重做）"
+
+msgid "Size"
+msgstr "保留步数"
+
+msgid "HISTORY_SIZE_TOOLTIP"
+msgstr "历史记录步数决定可以撤销或重做多少步。\n撤销（Ctrl+Z）和重做（Ctrl+Shift+Z）会在内存中保留项目的完整副本。\n性能和内存占用取决于项目大小及设备配置。"
+
+msgid "Authors"
+msgstr "作者"
+
+msgid "Contributors"
+msgstr "贡献者"
+
+msgid "AUID"
+msgstr "作者编号"
+
+msgid "AUID_TOOLTIP"
+msgstr "作者唯一编号是资源标识命名空间的第二部分，\n使多位作者同时编辑同一文档时不会产生编号冲突。"
+
+msgid "ACTIVE_CONTRIBUTOR_TOOLTIP"
+msgstr "勾选后，随后创建的资源将归属于选中的作者。"
+
+msgid "Active Contributor"
+msgstr "当前作者"
+
+msgid "Info"
+msgstr "信息"
+
+msgid "John Doe (contributor@project.tld)"
+msgstr "作者姓名（可填写联系方式）"
+
+msgid "Remove"
+msgstr "移除"
+
+msgid "Apply"
+msgstr "应用"
+
+msgid "Chapter"
+msgstr "章节"
+
+msgid "CHAPTER_ID_TOOLTIP"
+msgstr "章节编号是每份文档的唯一标识，也是资源标识命名空间的第一部分。\n将项目拆分为多个文件时，可用不同章节编号避免资源编号冲突。"
+
+msgid "CHAPTER_ID_UPDATE_TOOLTIP"
+msgstr "修改章节编号只影响以后创建的资源，\n不会更改已有资源的编号。"
+
+msgid "Update"
+msgstr "更新"
+
+msgid "New Document"
+msgstr "新建文档"
+
+msgid "Title"
+msgstr "标题"
+
+msgid "Project or Chapter Title"
+msgstr "项目或章节标题"
+
+msgid "Filename"
+msgstr "文件名"
+
+msgid "(without extension)"
+msgstr "（不含扩展名）"
+
+msgid "Filename's already used or invalid"
+msgstr "文件名已被使用或不合法"
+
+msgid "Full Path"
+msgstr "完整路径"
+
+msgid "[Generated]"
+msgstr "[自动生成]"
+
+msgid "Create"
+msgstr "创建"
+
+msgid "Select Current Folder"
+msgstr "选择当前文件夹"
+
+msgid "Inspector"
+msgstr "属性面板"
+
+msgid "Project"
+msgstr "项目"
+
+msgid "Filter Projects"
+msgstr "筛选项目"
+
+msgid "FILTER_REVERSE_TOOLTIP"
+msgstr "反向筛选\n显示不符合筛选条件的项目。"
+
+msgid "SORT_AZ_OR_UID_TOOLTIP"
+msgstr "按名称排序\n关闭时按资源编号排序。"
+
+msgid "Set"
+msgstr "设置"
+
+msgid "Export"
+msgstr "导出"
+
+msgid "Latest Save"
+msgstr "最近保存"
+
+msgid "Revert to the Latest Save"
+msgstr "恢复到最近保存的内容"
+
+msgid "Revert"
+msgstr "还原"
+
+msgid "Snapshots"
+msgstr "会话快照"
+
+msgid "Restore"
+msgstr "恢复"
+
+msgid "Preview"
+msgstr "预览"
+
+msgid "Rem."
+msgstr "移除"
+
+msgid "Node"
+msgstr "节点"
+
+msgid "Unique Node Name"
+msgstr "唯一节点名称"
+
+msgid "NODE_FOCUS_BTN_TOOLTIP"
+msgstr "在画布中定位当前编辑的节点\n（Ctrl + 反斜杠）"
+
+msgid "[Notes]"
+msgstr "[创作备注]"
+
+msgid "Previous Local History Modification"
+msgstr "上一条节点修改记录"
+
+msgid "Reset Node Parameters (Ctrl + Shift + Minus)"
+msgstr "重置节点参数（Ctrl + Shift + 减号）"
+
+msgid "Next Local History Modification"
+msgstr "下一条节点修改记录"
+
+msgid "SKIP_NODES_TOOLTIP"
+msgstr "跳过的节点不参与剧情执行。\n具体替代行为由节点类型决定。"
+
+msgid "Skip"
+msgstr "跳过"
+
+msgid "Update Node (Ctrl + Shift + Plus)"
+msgstr "更新节点（Ctrl + Shift + 加号）"
+
+msgid "Locate Previous Referrer"
+msgstr "定位上一个引用此资源的节点"
+
+msgid "Locate Next Referrer"
+msgstr "定位下一个引用此资源的节点"
+
+msgid "Scoped (Filter for Scene)"
+msgstr "仅限当前场景"
+
+msgid "NODES_TAB_BLOCKER"
+msgstr "选中一个节点以编辑属性，\n或在画布上右键添加新节点。"
+
+msgid "Scenes"
+msgstr "场景"
+
+msgid "Filter Scenes"
+msgstr "筛选场景"
+
+msgid "Unique Scene Name"
+msgstr "唯一场景名称"
+
+msgid "Macros"
+msgstr "可复用片段"
+
+msgid "Filter Macros"
+msgstr "筛选可复用片段"
+
+msgid "Unique Macro Name"
+msgstr "唯一片段名称"
+
+msgid "Variables"
+msgstr "变量"
+
+msgid "Variable"
+msgstr "变量"
+
+msgid "Filter Variables"
+msgstr "筛选变量"
+
+msgid "Filter by Type"
+msgstr "按类型筛选"
+
+msgid "Any"
+msgstr "全部"
+
+msgid "Num"
+msgstr "数值"
+
+msgid "Str"
+msgstr "文本"
+
+msgid "Bool"
+msgstr "布尔值"
+
+msgid "Name"
+msgstr "名称"
+
+msgid "Unique Variable Name"
+msgstr "唯一变量名称"
+
+msgid "Initial"
+msgstr "初始值"
+
+msgid "Str Value"
+msgstr "文本值"
+
+msgid "True"
+msgstr "真"
+
+msgid "False"
+msgstr "假"
+
+msgid "Characters"
+msgstr "人物"
+
+msgid "Filter Characters"
+msgstr "筛选人物"
+
+msgid "Unique Character Name"
+msgstr "唯一人物名称"
+
+msgid "No Initial Tag"
+msgstr "暂无初始标签"
+
+msgid "Key"
+msgstr "键"
+
+msgid "Value"
+msgstr "值"
+
+msgid "Oversets (adds or updates) a tag"
+msgstr "添加或更新标签"
+
+msgid "Console"
+msgstr "试玩面板"
+
+msgid "No Initial Tags"
+msgstr "暂无初始标签"
+
+msgid "Settings"
+msgstr "设置"
+
+msgid "Hides Console Preserving the State"
+msgstr "隐藏试玩面板并保留进度"
+
+msgid "Clears Console & State of Play"
+msgstr "清空试玩内容并重置进度"
+
+msgid "Clear"
+msgstr "清空"
+
+msgid "Back"
+msgstr "返回"
+
+msgid "Filter Node Types"
+msgstr "筛选节点类型"
+
+msgid "Insert"
+msgstr "插入"
+
+msgid "Clear Clipboard"
+msgstr "清空剪贴板"
+
+msgid "Copy Node(s)"
+msgstr "复制节点"
+
+msgid "Cut Node(s)"
+msgstr "剪切节点"
+
+msgid "Paste Node(s)"
+msgstr "粘贴节点"
+
+msgid "Remove Node(s)"
+msgstr "移除节点"
+
+msgid "History Undo (Ctrl + Z)"
+msgstr "撤销（Ctrl + Z）"
+
+msgid "History Redo (Ctrl + Shift + Z)"
+msgstr "重做（Ctrl + Shift + Z）"
+
+msgid "Play from Project Entry (F4)"
+msgstr "从项目入口试玩（F4）"
+
+msgid "Play from Scene Entry (F5)"
+msgstr "从场景入口试玩（F5）"
+
+msgid "Show Console (F6)"
+msgstr "显示试玩面板（F6）"
+
+msgid "Play Selected Node (F7)"
+msgstr "试玩选中节点（F7）"
+
+msgid "Save Document (Ctrl + S)"
+msgstr "保存文档（Ctrl + S）"
+
+msgid "Save"
+msgstr "保存"
+
+msgid "Query"
+msgstr "搜索"
+
+msgid "SCOPED_QUERY_TOOLTIP"
+msgstr "仅搜索当前场景；关闭时搜索整个项目。"
+
+msgid "Query (Ctrl + Q)"
+msgstr "搜索（Ctrl + Q）"
+
+msgid "Locate Previous Match (Ctrl + 1)"
+msgstr "上一个搜索结果（Ctrl + 1）"
+
+msgid "Locate Next Match (Ctrl + 2)"
+msgstr "下一个搜索结果（Ctrl + 2）"
+
+msgid "Toggle Inspector Panel (Ctrl + P)"
+msgstr "显示或隐藏属性面板（Ctrl + P）"
+
+msgid "Inspect."
+msgstr "属性"
+
+msgid "Quick Pref."
+msgstr "快捷设置"
+
+msgid "Discarding New Project ?"
+msgstr "放弃未保存的项目？"
+
+msgid "PROJECT_DISCARD_WARNING"
+msgstr "“%s”已被修改。新建空白项目会丢弃所有未保存的内容。"
+
+msgid "OK! Proceed Anyway"
+msgstr "继续并放弃修改"
+
+msgid "Lost Project!"
+msgstr "找不到项目"
+
+msgid "LOST_PROJECT_WARNING"
+msgstr "无法找到或读取选中的项目（编号 %s）。\n文件可能已被重命名、删除，或当前没有读取权限。项目目录文件损坏也可能导致此问题。\n\n"
+
+msgid "Expected file: "
+msgstr "预期文件："
+
+msgid "Unlist Project"
+msgstr "从项目列表移除"
+
+msgid "Overriding Unsaved Project ?"
+msgstr "放弃当前未保存的修改？"
+
+msgid "UNSAVED_PROJECT_WARNING"
+msgstr "“%s”有未保存的修改。打开其他项目将丢弃这些内容。是否继续？"
+
+msgid "Yes, Open"
+msgstr "放弃修改并打开"
+
+msgid "Are you sure ?!"
+msgstr "确认操作？"
+
+msgid "UNSAVED_CHANGES_WARNING"
+msgstr "项目“%s”已被修改。直接关闭将丢弃未保存的内容。"
+
+msgid "Close Anyway"
+msgstr "放弃修改并关闭"
+
+msgid "Save Project"
+msgstr "保存项目"
+
+msgid "PROJECT_REVERT_WARNING"
+msgstr "即将从磁盘重新读取最近保存的项目。当前内存中的所有未保存修改都会被丢弃。"
+
+msgid "Revert; I'm Sure"
+msgstr "确认还原"
+
+msgid "UPDATE_CHAPTER_ID_NOTIFICATION"
+msgstr "新的章节编号会改变此项目文件中资源标识的命名空间。\n只有将项目拆分为多个文档、需要避免编号冲突时，才需要为各文档设置不同的章节编号。\n此次修改只影响以后创建的节点、场景等资源，已有资源保留原编号。"
+
+msgid "OK; Update"
+msgstr "确认更新"
+
+msgid "Invalid Operation!"
+msgstr "操作无效"
+
+msgid "PROJECT_ENTRY_IN_MACRO_ERROR"
+msgstr "可复用片段用于重复调用，不能作为项目入口。"
+
+msgid "Unsafe Operation Ignored!"
+msgstr "无法执行此操作"
+
+msgid "USED_RESOURCE_NOT_REMOVED"
+msgstr "其他节点或资源仍依赖此资源，暂时无法移除。"
+
+msgid "MAY_BE_USED_SCENE_NOT_REMOVED"
+msgstr "例如，此场景中的某个节点可能是其他场景中跳转节点的目标。"
+
+msgid "Referenced resource(s): "
+msgstr "被引用的资源："
+
+msgid "REFERENCED_RESOURCE_NOT_REMOVED"
+msgstr "至少有一项资源仍被其他节点或资源引用。\n请先移除或修改这些引用，再删除资源。\n\n"
+
+msgid "Unsafe Move Detected!"
+msgstr "部分节点无法移动"
+
+msgid "IMMOVABLE_NODES_ERROR"
+msgstr "为保持剧情结构完整，部分节点不能移动，例如场景入口。\n\n"
+
+msgid "Immovable(s): "
+msgstr "无法移动的节点："
+
+msgid "Move What's Safe (%s)"
+msgstr "仅移动允许的节点（%s）"
+
+msgid "Merger Detected [Experimental!]"
+msgstr "合并资源（实验功能）"
+
+msgid "MERGER_OPERATION_DESCRIPTION"
+msgstr "正在从“{origin}”（章节 {cid}）粘贴资源：{statistics}\n其中 {main_count} 项是主要资源，其余是它们引用的依赖资源。\n\n"
+
+msgid "SCENES_FIELD_NAME"
+msgstr "场景"
+
+msgid "MACROS_FIELD_NAME"
+msgstr "可复用片段"
+
+msgid "NODES_FIELD_NAME"
+msgstr "节点"
+
+msgid "VARIABLES_FIELD_NAME"
+msgstr "变量"
+
+msgid "CHARACTERS_FIELD_NAME"
+msgstr "人物"
+
+msgid "MERGER_OPERATION_STRATEGY_CHOICE"
+msgstr "存在编号相同的共享资源时，请选择合并策略："
+
+msgid "Reuse"
+msgstr "复用已有资源"
+
+msgid "Recreate"
+msgstr "重新创建资源"
+
+msgid "NO_SAVE_IN_SNAPSHOT_PREVIEW"
+msgstr "快照预览期间不能保存项目。\n要保留快照内容，请将快照恢复为当前草稿后保存，或将预览内容导出为新项目。"
+
+msgid "PROJECT_REMOVAL_PROMPT"
+msgstr "即将从列表移除项目 [i]“{name}”[/i]（编号 {pid}）。\n仅从列表移除会保留文档文件。删除文件则无法恢复。\n\n"
+
+msgid "Project file: `%s`"
+msgstr "项目文件：`%s`"
+
+msgid "Delete File!"
+msgstr "删除文件"
+
+msgid "Unlist"
+msgstr "仅从列表移除"
+
+msgid "SNAPSHOT_RESTORATION_PROMPT"
+msgstr "即将恢复快照 [i]“v%s”[/i]。\n此操作会替换内存中的当前项目，但不会改动磁盘文件或其他快照，除非随后保存。\n如需保留当前草稿，请先退出预览并创建快照。"
+
+msgid "Restore; I'm Sure"
+msgstr "确认恢复"
+
+msgid "Invalid Project File!"
+msgstr "项目文件无效"
+
+msgid "INVALID_PROJECT_FILE_IMPORT"
+msgstr "无法校验并导入所选文件。\n文件格式可能不受支持，或文件已经损坏。"
+
+msgid "Quick Re-Export Not Available!"
+msgstr "暂时无法快速重新导出"
+
+msgid "QUICK_REEXPORT_NOT_YET"
+msgstr "本次会话尚未导出项目。\n快速重新导出会沿用上次导出的路径和格式。\n请先使用[i]属性面板 → 项目 → 导出[/i]完成一次导出。"
+
+msgid "IO Operation Failed!"
+msgstr "文件读写失败"
+
+msgid "EXPORT_IO_FAILED"
+msgstr "无法写入目标路径，或无法读取运行模板。\n请检查文件路径及读写权限。"
+
+msgid "Error!"
+msgstr "错误"
+
+msgid "SHOW_ERROR_FALLBACK_MSG"
+msgstr "操作发生错误。请查看运行日志中的详细信息。"
+
+msgid "Select an Arrow Document"
+msgstr "选择 Arrow 剧本文档"
+
+msgid "Save Document"
+msgstr "保存文档"
+
+msgid "Export as JSON"
+msgstr "导出为 JSON"
+
+msgid "Export Playable HTML"
+msgstr "导出可试玩的网页"
+
+msgid "Export CSV (Translation)"
+msgstr "导出翻译表格（CSV）"
+
+msgid "Select App Local Directory"
+msgstr "选择本地工作目录"
+
+msgid "NO_ALD_ACCESS"
+msgstr "无法访问工作目录"
+
+msgid "UNABLE_TO_ACCESS_ALD_MSG"
+msgstr "无法访问所选工作目录，可能没有读写权限。\n将继续使用之前确认的目录。"
+
+msgid "Fullscreen (F11)"
+msgstr "全屏（F11）"
+
+msgid "Exit Fullscreen (F11)"
+msgstr "退出全屏（F11）"
+
+msgid "Stay Above"
+msgstr "窗口置顶"
+
+msgid "Leave Above"
+msgstr "取消置顶"
+
+msgid "Refresh"
+msgstr "刷新"
+
+msgid "About"
+msgstr "关于"
+
+msgid "Quit"
+msgstr "退出"
+
+msgid "BROWSER_STORAGE_CLEAR_PROMPT"
+msgstr "即将清空此浏览器内 Arrow 的项目存储。\n删除的数据无法恢复，请先导出需要保留的内容。\n"
+
+msgid "Ok; Terminate!"
+msgstr "确认清空"
+
+msgid "Unable to Remove!"
+msgstr "无法移除"
+
+msgid "UNABLE_TO_REMOVE_FROM_GRID"
+msgstr "至少一个选中节点不能移除。\n其他资源依赖的节点，以及当前场景或项目的有效入口，都不能直接删除。\n\n"
+
+msgid "Non-removable(s): "
+msgstr "无法移除的节点："
+
+msgid "NEW_VERSION_RELEASE_MSG"
+msgstr "Arrow %s 新版本已发布"
+
+msgid "QUERY_MATCH_OPTION_BUTTON_TEXT_TEMPLATE"
+msgstr "{current} / {total} 个结果"
+
+msgid "QUERY_MATCH_ITEM_TEXT_TEMPLATE"
+msgstr "{name} - {capitalized_type}"
+
+msgid "Any Match"
+msgstr "任意关键词"
+
+msgid "Including"
+msgstr "包含全部文本"
+
+msgid "Exact Match"
+msgstr "精确匹配"
+
+msgid "RegEx"
+msgstr "正则表达式"
+
+msgid "Auto Inspection"
+msgstr "自动显示节点属性"
+
+msgid "Auto Node Update"
+msgstr "自动更新节点"
+
+msgid "Reset on Reinspection"
+msgstr "重新选中时重置编辑内容"
+
+msgid "Quick Node Insertion"
+msgstr "快速插入节点"
+
+msgid "Connection Assist"
+msgstr "连线辅助"
+
+msgid "Auto Rebuild Runtime(s)"
+msgstr "自动重建运行模板"
+
+msgid "ACTIVE_AUTHOR_MARKER"
+msgstr "[✓] "
+
+msgid "CONSOLE_STATUS_END_EDGE_MESSAGE"
+msgstr "◆ 剧情到此结束：{name}（{uid}）"
+
+msgid "CONSOLE_STATUS_NO_DEFAULT_MESSAGE"
+msgstr "⚠ 无默认分支：{name}（{uid}）"
+
+msgid "CONSOLE_CLEARANCE_PREVENTION_MESSAGE"
+msgstr "已阻止清空试玩内容。"
+
+msgid "Auto-scroll"
+msgstr "自动滚动"
+
+msgid "Allow Auto-play"
+msgstr "允许自动播放"
+
+msgid "Prevent Clearance"
+msgstr "阻止清空内容"
+
+msgid "Show Skipped Nodes"
+msgstr "显示被跳过的节点"
+
+msgid "Inspect Variables"
+msgstr "查看变量"
+
+msgid "Inspect Character Tags"
+msgstr "查看人物标签"
+
+msgid "TYPE_INSPECTOR_RAW_UID_HINT"
+msgstr "\n[点击复制编号]"
+
+msgid "RESOURCE_PERMANENT_REMOVAL_WARNING"
+msgstr "即将永久移除{field_name}“{res_name}”。\n是否继续？"
+
+msgid "Yes, Remove"
+msgstr "确认移除"
+
+msgid "New Blank Project"
+msgstr "新建空白项目"
+
+msgid "Save Current & Continue"
+msgstr "保存当前项目并继续"
+
+msgid "Load Project"
+msgstr "打开项目"
+
+msgid "Import Project File"
+msgstr "导入项目文件"
+
+msgid "Save a Copy"
+msgstr "另存副本"
+
+msgid "Download a Copy"
+msgstr "下载副本"
+
+msgid "Export JSON"
+msgstr "导出 JSON"
+
+msgid "Export HTML"
+msgstr "导出网页"
+
+msgid "Export CSV"
+msgstr "导出表格"
+
+msgid "Invalid Filename!"
+msgstr "文件名无效"
+
+msgid "INVALID_FILENAME_MSG"
+msgstr "请输入有效的文件名，至少包含一个字符。"
+
+msgid "ALD_PRESET_USER_DIR"
+msgstr "系统默认应用目录"
+
+msgid "ALD_PRESET_RES_DIR"
+msgstr "Arrow 程序所在目录"
+
+msgid "Are you sure ?"
+msgstr "确认操作？"
+
+msgid "Check for variable"
+msgstr "检查变量"
+
+msgid "if"
+msgstr "如果"
+
+msgid "comparing to"
+msgstr "比较对象"
+
+msgid "Unset!"
+msgstr "未设置"
+
+msgid "{text} ({sign})"
+msgstr "{text}（{sign}）"
+
+msgid "Self (Initial Value)"
+msgstr "自身初始值"
+
+msgid "No Variable Available"
+msgstr "暂无可用变量"
+
+msgid "is Equal"
+msgstr "等于"
+
+msgid "is Not Equal"
+msgstr "不等于"
+
+msgid "is Greater"
+msgstr "大于"
+
+msgid "is Greater or Equal"
+msgstr "大于或等于"
+
+msgid "is Lesser"
+msgstr "小于"
+
+msgid "is Lesser or Equal"
+msgstr "小于或等于"
+
+msgid "Matches RegEx Pattern"
+msgstr "匹配正则表达式"
+
+msgid "Contains Substring"
+msgstr "包含文本"
+
+msgid "Contains Substring (Case-Sensitive)"
+msgstr "包含文本（区分大小写）"
+
+msgid "Begins with"
+msgstr "开头为"
+
+msgid "Ends with"
+msgstr "结尾为"
+
+msgid "Has Equal Length"
+msgstr "长度相等"
+
+msgid "Is Longer"
+msgstr "长度更长"
+
+msgid "Is Shorter"
+msgstr "长度更短"
+
+msgid "Conforms"
+msgstr "相同"
+
+msgid "Doesn't Conform"
+msgstr "不同"
+
+msgid "Self (Initial `%s`)"
+msgstr "自身初始值（`%s`）"
+
+msgid "[Invalid]"
+msgstr "[无效]"
+
+msgid "Continue"
+msgstr "继续"
+
+msgid "Brief"
+msgstr "摘要长度"
+
+msgid "Sets brief length up to the the text cursor's position."
+msgstr "将光标之前的正文长度设为摘要长度。"
+
+msgid "Auto Play"
+msgstr "自动播放"
+
+msgid "Clear Page"
+msgstr "清空当前页"
+
+msgid "No Content Text."
+msgstr "暂无正文。"
+
+msgid "Untitled"
+msgstr "未命名"
+
+msgid "No Brief."
+msgstr "暂无摘要。"
+
+msgid "Character"
+msgstr "人物"
+
+msgid "Lines"
+msgstr "台词 / 选项列表"
+
+msgid "Playable"
+msgstr "由玩家选择台词"
+
+msgid "Append New Line"
+msgstr "添加新台词"
+
+msgid "Extract Selected Line"
+msgstr "提取选中台词"
+
+msgid "Replace Selected Line"
+msgstr "替换选中台词"
+
+msgid "Remove Selected Line(s)"
+msgstr "移除选中台词"
+
+msgid "Sort Lines (Alphabetical)"
+msgstr "按文本排序台词"
+
+msgid "Move Selected Top"
+msgstr "将选中项移至顶部"
+
+msgid "Move Selected End"
+msgstr "将选中项移至末尾"
+
+msgid "Move Selected Up"
+msgstr "上移选中项"
+
+msgid "Move Selected Down"
+msgstr "下移选中项"
+
+msgid "Plaque"
+msgstr "入口标识"
+
+msgid "Every project and all its scenes \nrequire an entry node to play properly."
+msgstr "项目及各个场景都需要一个有效入口，才能正常试玩。"
+
+msgid "Active For"
+msgstr "设为入口"
+
+msgid "Scene"
+msgstr "场景"
+
+msgid "Invalid"
+msgstr "无效"
+
+msgid "No Plaque"
+msgstr "未填写入口标识"
+
+msgid "Unset"
+msgstr "未设置"
+
+msgid "Color"
+msgstr "颜色"
+
+msgid "Label"
+msgstr "标签文字"
+
+msgid "Width"
+msgstr "宽度"
+
+msgid "Height"
+msgstr "高度"
+
+msgid "Unlabeled"
+msgstr "未命名标签"
+
+msgid "Frame Has No Extra Information."
+msgstr "分组框暂无补充信息。"
+
+msgid "No Label!"
+msgstr "未填写标签"
+
+msgid "Proceed"
+msgstr "继续"
+
+msgid "For"
+msgstr "目标变量"
+
+msgid "Generate"
+msgstr "生成方式"
+
+msgid "From"
+msgstr "从"
+
+msgid "To"
+msgstr "到"
+
+msgid "Neg"
+msgstr "负数"
+
+msgid "Even"
+msgstr "偶数"
+
+msgid "Odd"
+msgstr "奇数"
+
+msgid "Pool"
+msgstr "候选字符"
+
+msgid "ASCII Characters (En Alphanumeric)"
+msgstr "ASCII 字符（英文字母及数字）"
+
+msgid "Length"
+msgstr "长度"
+
+msgid "Pool of Strings"
+msgstr "候选文本集合"
+
+msgid "Undefined"
+msgstr "未定义"
+
+msgid "Null/Invalid"
+msgstr "空值或无效"
+
+msgid "[Skipped]"
+msgstr "[已跳过]"
+
+msgid "{name} `{original}` : {updated}"
+msgstr "{name}：`{original}` → {updated}"
+
+msgid "* Separate with `%s`"
+msgstr "* 使用 `%s` 分隔"
+
+msgid "{name} ({type})"
+msgstr "{name}（{type}）"
+
+msgid "Random Integer"
+msgstr "随机整数"
+
+msgid "Random ASCII String"
+msgstr "随机 ASCII 文本"
+
+msgid "From Set of Strings"
+msgstr "从候选文本中选取"
+
+msgid "Random Boolean"
+msgstr "随机布尔值"
+
+msgid "Input Slots Count"
+msgstr "输入端口数量"
+
+msgid "Append New Action"
+msgstr "添加新选项"
+
+msgid "Extract Selected Action"
+msgstr "提取选中选项"
+
+msgid "Replace Selected Action"
+msgstr "替换选中选项"
+
+msgid "Remove Selected Action(s)"
+msgstr "移除选中选项"
+
+msgid "Sort Actions (Alphabetical)"
+msgstr "按文本排序选项"
+
+msgid "Reason"
+msgstr "跳转说明"
+
+msgid "e.g. Level Up, Next Scene ..."
+msgstr "例如：升级、进入下一场景……"
+
+msgid "Destination"
+msgstr "跳转目标"
+
+msgid "Node UID"
+msgstr "目标节点编号"
+
+msgid "No Reason"
+msgstr "未填写跳转说明"
+
+msgid "Invalid!"
+msgstr "无效"
+
+msgid "Play"
+msgstr "播放"
+
+msgid "Macro"
+msgstr "可复用片段"
+
+msgid "No Macro Available"
+msgstr "暂无可用片段"
+
+msgid "No Macro"
+msgstr "未选择片段"
+
+msgid "[No Notes.]"
+msgstr "[暂无备注]"
+
+msgid "No Monolog."
+msgstr "暂无独白。"
+
+msgid "Output Slots Count"
+msgstr "输出端口数量"
+
+msgid "Run"
+msgstr "执行"
+
+msgid "Sequence length"
+msgstr "执行序列长度"
+
+msgid "* Handle with Care!"
+msgstr "* 请谨慎使用"
+
+msgid "Edit"
+msgstr "编辑"
+
+msgid "Key (Required & Non-blank)"
+msgstr "键（必填且不能为空）"
+
+msgid "N/A"
+msgstr "不适用"
+
+msgid "Not Applicable: The node's resource data is corrupt"
+msgstr "无法使用：此节点的资源数据已损坏。"
+
+msgid "{key}: `{value}`"
+msgstr "{key}：`{value}`"
+
+msgid "No Character Available"
+msgstr "暂无可用人物"
+
+msgid "Inset"
+msgstr "仅新增"
+
+msgid "Overset"
+msgstr "新增或更新"
+
+msgid "Outset"
+msgstr "按键和值删除"
+
+msgid "Adds a key:value tag, only if the key does not exist."
+msgstr "仅当键不存在时，新增该键和值。"
+
+msgid "Resets value of a tag, only if the key exists."
+msgstr "仅当键已存在时，更新标签值。"
+
+msgid "Overwrites or adds a key:value tag, whether the key exists or not."
+msgstr "键已存在时更新值，不存在时新增标签。"
+
+msgid "Removes a tag if both key & value match."
+msgstr "键和值都匹配时删除标签。"
+
+msgid "Removes a tag if just the key matches."
+msgstr "只要键匹配就删除标签。"
+
+msgid "EOL"
+msgstr "结束"
+
+msgid "Match"
+msgstr "匹配"
+
+msgid "Tag Key"
+msgstr "标签键"
+
+msgid "Required & Non-blank"
+msgstr "必填且不能为空"
+
+msgid "Patterns"
+msgstr "匹配规则"
+
+msgid "Invalid Tag Key"
+msgstr "标签键无效"
+
+msgid "No Match (EOL)"
+msgstr "未匹配，剧情结束"
+
+msgid "Append New Pattern"
+msgstr "添加匹配规则"
+
+msgid "Extract Selected Pattern"
+msgstr "提取选中规则"
+
+msgid "Replace Selected Pattern"
+msgstr "替换选中规则"
+
+msgid "Remove Selected Pattern(s)"
+msgstr "移除选中规则"
+
+msgid "Sort Patterns (Alphabetical)"
+msgstr "按文本排序规则"
+
+msgid "Invalid Tag Key!"
+msgstr "标签键无效"
+
+msgid "Invalid Character"
+msgstr "人物无效"
+
+msgid "No Tags To Check!"
+msgstr "没有可检查的标签"
+
+msgid "Check"
+msgstr "检查方式"
+
+msgid "No Tags To Check"
+msgstr "没有可检查的标签"
+
+msgid "Check Key Only"
+msgstr "只检查键"
+
+msgid "Undefined!"
+msgstr "未定义"
+
+msgid "Any (OR)"
+msgstr "任一匹配（或）"
+
+msgid "All (AND)"
+msgstr "全部匹配（且）"
+
+msgid "If at least one of the tags matches, it short-circuits and passes."
+msgstr "至少一个标签匹配即通过，不再继续检查。"
+
+msgid "All tags shall match for the node to pass."
+msgstr "所有标签都匹配时才通过。"
+
+msgid "* Invalid Input!"
+msgstr "* 输入无效"
+
+msgid "Submit"
+msgstr "提交"
+
+msgid "Ask player"
+msgstr "向玩家提问"
+
+msgid "Set user input to"
+msgstr "将输入保存到变量"
+
+msgid "Customize controls"
+msgstr "自定义输入控件"
+
+msgid "Pattern"
+msgstr "匹配规则"
+
+msgid "Default"
+msgstr "默认值"
+
+msgid "Preset value"
+msgstr "预设值"
+
+msgid "Extra"
+msgstr "补充属性"
+
+msgid "Placeholder, Hint, etc."
+msgstr "占位文字、提示等"
+
+msgid "Min"
+msgstr "最小值"
+
+msgid "Max"
+msgstr "最大值"
+
+msgid "Step"
+msgstr "步长"
+
+msgid "Negative"
+msgstr "否定选项文字"
+
+msgid "Positive"
+msgstr "肯定选项文字"
+
+msgid "Preset True"
+msgstr "默认选中“真”"
+
+msgid "No Question!"
+msgstr "未填写问题"
+
+msgid "Unset/Invalid Variable!"
+msgstr "变量未设置或无效"
+
+msgid "nil"
+msgstr "空"
+
+msgid "undefined"
+msgstr "未定义"
+
+msgid "by"
+msgstr "运算方式"
+
+msgid "with/to"
+msgstr "运算值"
+
+msgid "Unset !"
+msgstr "未设置"
+
+msgid "Set Equal"
+msgstr "赋值"
+
+msgid "Addition"
+msgstr "加法"
+
+msgid "Subtraction"
+msgstr "减法"
+
+msgid "Division"
+msgstr "除法"
+
+msgid "Remainder"
+msgstr "取余"
+
+msgid "Multiplication"
+msgstr "乘法"
+
+msgid "Exponentiation"
+msgstr "乘方"
+
+msgid "Absolute"
+msgstr "绝对值"
+
+msgid "Set Capitalized"
+msgstr "设置为单词首字母大写"
+
+msgid "Set Lowercased"
+msgstr "设置为小写"
+
+msgid "Set Uppercased"
+msgstr "设置为大写"
+
+msgid "Insert Right"
+msgstr "追加到右侧"
+
+msgid "Insert Left"
+msgstr "添加到左侧"
+
+msgid "Remove Left"
+msgstr "移除左侧文本"
+
+msgid "Remove Left (Case Insensitive)"
+msgstr "移除左侧文本（忽略大小写）"
+
+msgid "Remove Right"
+msgstr "移除右侧文本"
+
+msgid "Remove Right (Case Insensitive)"
+msgstr "移除右侧文本（忽略大小写）"
+
+msgid "Replace"
+msgstr "替换"
+
+msgid "Use pipe to define arguments (i.e. `find|replace`)."
+msgstr "用竖线分隔查找和替换文本，例如 `find|replace`。"
+
+msgid "Replace (Case Insensitive)"
+msgstr "替换（忽略大小写）"
+
+msgid "Set Negative"
+msgstr "取反"
+
+msgid "Dark"
+msgstr "深色"
+
+msgid "Light"
+msgstr "浅色"
+
+msgid "Chinese, China"
+msgstr "简体中文"
+
+msgid "Chinese"
+msgstr "中文"
+
+msgid "English"
+msgstr "英语"
+
+msgid "Persian"
+msgstr "波斯语"
+
+msgid "Cut"
+msgstr "剪切"
+
+msgid "Copy"
+msgstr "复制"
+
+msgid "Paste"
+msgstr "粘贴"
+
+msgid "Delete"
+msgstr "删除"
+
+msgid "Select All"
+msgstr "全选"
+
+msgid "Undo"
+msgstr "撤销"
+
+msgid "Redo"
+msgstr "重做"
+
+msgid "Text Writing Direction"
+msgstr "文本书写方向"
+
+msgid "Display Control Characters"
+msgstr "显示控制字符"
+
+msgid "Insert Control Character"
+msgstr "插入控制字符"
+
+msgid "Same as Layout Direction"
+msgstr "跟随界面布局方向"
+
+msgid "Auto-Detect Direction"
+msgstr "自动判断方向"
+
+msgid "Left-to-Right"
+msgstr "从左到右"
+
+msgid "Right-to-Left"
+msgstr "从右到左"
+
+msgid "Left-to-Right Mark (LRM)"
+msgstr "从左到右标记"
+
+msgid "Right-to-Left Mark (RLM)"
+msgstr "从右到左标记"
+
+msgid "Start of Left-to-Right Embedding (LRE)"
+msgstr "开始从左到右嵌入"
+
+msgid "Start of Right-to-Left Embedding (RLE)"
+msgstr "开始从右到左嵌入"
+
+msgid "Start of Left-to-Right Override (LRO)"
+msgstr "开始从左到右覆盖"
+
+msgid "Start of Right-to-Left Override (RLO)"
+msgstr "开始从右到左覆盖"
+
+msgid "Pop Direction Formatting (PDF)"
+msgstr "结束方向格式"
+
+msgid "Arabic Letter Mark (ALM)"
+msgstr "阿拉伯字母标记"
+
+msgid "Left-to-Right Isolate (LRI)"
+msgstr "从左到右隔离"
+
+msgid "Right-to-Left Isolate (RLI)"
+msgstr "从右到左隔离"
+
+msgid "First Strong Isolate (FSI)"
+msgstr "首个强方向字符隔离"
+
+msgid "Pop Direction Isolate (PDI)"
+msgstr "结束方向隔离"
+
+msgid "Zero-Width Joiner (ZWJ)"
+msgstr "零宽连接符"
+
+msgid "Zero-Width Non-Joiner (ZWNJ)"
+msgstr "零宽非连接符"
+
+msgid "Word Joiner (WJ)"
+msgstr "单词连接符"
+
+msgid "Soft Hyphen (SHY)"
+msgstr "软连字符"
+
+msgid "Go to previous folder."
+msgstr "返回上一个文件夹。"
+
+msgid "Go to next folder."
+msgstr "前往下一个文件夹。"
+
+msgid "Go to parent folder."
+msgstr "前往上一级文件夹。"
+
+msgid "Path:"
+msgstr "路径："
+
+msgid "Refresh files."
+msgstr "刷新文件列表。"
+
+msgid "Toggle the visibility of hidden files."
+msgstr "显示或隐藏隐藏文件。"
+
+msgid "Toggle the visibility of the filter for file names."
+msgstr "显示或隐藏文件名筛选框。"
+
+msgid "Create a new folder."
+msgstr "新建文件夹。"
+
+msgid "Directories & Files:"
+msgstr "文件夹与文件："
+
+msgid "Filter:"
+msgstr "筛选："
+
+msgid "File:"
+msgstr "文件："
+
+msgid "Arrow Document"
+msgstr "Arrow 剧本文档"
+
+msgid "Purged Arrow Export"
+msgstr "精简的 Arrow 项目"
+
+msgid "Playable HTML"
+msgstr "可试玩的网页"
+
+msgid "Translation File"
+msgstr "翻译表格"
+
+msgid "All Files"
+msgstr "所有文件"
+
+msgid "All Files (*.*)"
+msgstr "所有文件（*.*）"
+
+msgid "Please Confirm..."
+msgstr "请确认"
+
+msgid "Create Folder"
+msgstr "新建文件夹"
+
+msgid "Name:"
+msgstr "名称："
+
+msgid "Alert!"
+msgstr "提示"
+
+msgid "Could not create folder."
+msgstr "无法创建文件夹。"
+
+msgid "Invalid extension, or empty filename."
+msgstr "扩展名无效或文件名为空。"
+
+msgid "[ [color=green]Project descriptions[/color] are fetched from the notes on the [color=yellow]entry node[/color] of the selected one ]"
+msgstr "[ 项目说明取自所选项目[color=yellow]入口节点[/color]的[color=green]备注[/color] ]"
+
+msgid "[ [color=green]Scene descriptions[/color] are fetched from the notes on the [color=yellow]entry node[/color] of the selected one ]"
+msgstr "[ 场景说明取自所选场景[color=yellow]入口节点[/color]的[color=green]备注[/color] ]"
+
+msgid "[ [color=green]Macro descriptions[/color] are fetched from the notes on the [color=yellow]entry node[/color] of the selected one ]"
+msgstr "[ 片段说明取自所选片段[color=yellow]入口节点[/color]的[color=green]备注[/color] ]"
+
+msgid "Ref(s)"
+msgstr "引用"
+
+msgid "Instance(s)"
+msgstr "调用位置"
+
+msgid "Reference(s)"
+msgstr "引用位置"
+
+msgid "Appearance(s)"
+msgstr "出场位置"
+
+msgid "Number"
+msgstr "数值"
+
+msgid "String"
+msgstr "文本"
+
+msgid "Boolean"
+msgstr "布尔值"
+
+msgid "Number (num)"
+msgstr "数值"
+
+msgid "String (str)"
+msgstr "文本"
+
+msgid "Boolean (bool)"
+msgstr "布尔值"
+
+msgid "Untitled Adventure"
+msgstr "未命名剧本"
+
+msgid "Initial Scene"
+msgstr "初始场景"
+
+msgid "Start"
+msgstr "开始"
+
+msgid "Hello World!"
+msgstr "开始创作"
+
+msgid "Let's begin our adventure."
+msgstr "在这里写下故事的开端。"
+
+msgid "Anonymous"
+msgstr "匿名人物"
+
+msgid "Anonymous Contributor"
+msgstr "个人作者"
+
+msgid "Zoom Out"
+msgstr "缩小"
+
+msgid "Zoom Reset"
+msgstr "恢复缩放"
+
+msgid "Zoom In"
+msgstr "放大"
+
+msgid "Toggle the visual grid."
+msgstr "显示或隐藏网格。"
+
+msgid "Toggle snapping to the grid."
+msgstr "开启或关闭网格吸附。"
+
+msgid "Change the snapping distance."
+msgstr "调整网格吸附间距。"
+
+msgid "Toggle the graph minimap."
+msgstr "显示或隐藏剧情缩略图。"
+
+msgid "Automatically arrange selected nodes."
+msgstr "自动排列选中节点。"
+
+msgid "Unsafe Operation Ignored."
+msgstr "无法执行此操作"
+
+msgid "Scene or Project Entry!"
+msgstr "场景或项目入口"
+
+msgid "ERR!"
+msgstr "读取失败"
+
+msgid "UID: %s"
+msgstr "资源编号：%s"
+
+msgid "Unnamed - %s"
+msgstr "未命名 - %s"
+
+msgid "Pick a color from the application window."
+msgstr "从应用窗口中拾取颜色。"
+
+msgid "Select a picker shape."
+msgstr "选择取色器形状。"
+
+msgid "HSV Rectangle"
+msgstr "色相 / 饱和度矩形"
+
+msgid "HSV Wheel"
+msgstr "色相 / 饱和度色环"
+
+msgid "VHS Circle"
+msgstr "明度 / 色相 / 饱和度色环"
+
+msgid "OKHSL Circle"
+msgstr "感知色彩色环"
+
+msgid "RAW"
+msgstr "原始值"
+
+msgid "Select a picker mode."
+msgstr "选择取色模式。"
+
+msgid "OKHSL"
+msgstr "感知色彩"
+
+msgid "Colorized Sliders"
+msgstr "彩色滑块"
+
+msgid "Switch between hexadecimal and code values."
+msgstr "切换十六进制与代码形式的颜色值。"
+
+msgid "Enter a hex code (\"#ff0000\") or named color (\"red\")."
+msgstr "输入十六进制颜色值（例如 #ff0000）或颜色名称（例如 red）。"
+
+msgid "Hex code or named color"
+msgstr "十六进制颜色值或颜色名称"
+
+msgid "Swatches"
+msgstr "色板"
+
+msgid "Show all options available."
+msgstr "显示全部选项。"
+
+msgid "Add current color as a preset."
+msgstr "将当前颜色加入预设。"
+
+msgid "Recent Colors"
+msgstr "最近使用的颜色"
+
+msgid "Remove Tag"
+msgstr "删除标签"
+
+msgid "File Exists"
+msgstr "文件已存在"
+
+msgid "File already exists, overwrite?"
+msgstr "文件已存在，是否覆盖？"
+
+msgid "File already exists. Do you want to overwrite it?"
+msgstr "文件已存在，是否覆盖？"
+
+msgid "Please enter a valid name."
+msgstr "请输入有效名称。"
+
+msgid "Open a File"
+msgstr "打开文件"
+
+msgid "Open File(s)"
+msgstr "打开文件"
+
+msgid "Open a Directory"
+msgstr "打开文件夹"
+
+msgid "Open a File or Directory"
+msgstr "打开文件或文件夹"
+
+msgid "Save a File"
+msgstr "保存文件"
+
+msgid "No sub-resources found."
+msgstr "未找到子资源。"
+
+msgid "Filename Filter:"
+msgstr "文件名筛选："
+
+msgid "[Will be Auto-generated]"
+msgstr "[自动生成]"
+
+msgid "[Heading]"
+msgstr "[标题]"
+
+msgid "[i][Message Here!][/i]"
+msgstr "[i][提示内容][/i]"
+
+msgid "[Action(s)]"
+msgstr "[操作]"
+
+msgid "[Project Title]"
+msgstr "[项目标题]"
+
+msgid "[Timestamp]"
+msgstr "[保存时间]"
+
+msgid "[New Version ?]"
+msgstr "[检查新版本]"
+
+msgid "[Current Scene]"
+msgstr "[当前场景]"
+
+msgid "[Mode]"
+msgstr "[模式]"
+
+msgid "[S:T Matches]"
+msgstr "[搜索结果]"
+
+msgid "[Statement]"
+msgstr "[条件表达式]"
+
+msgid "[Rich [color=yellow]Title[/color]]"
+msgstr "[富文本[color=yellow]标题[/color]]"
+
+msgid "[Rich [color=green]Brief[/color] (legacy)]"
+msgstr "[富文本[color=green]摘要[/color]（旧版）]"
+
+msgid "[Rich [color=red]Content [/color] all with [i]BBCode[/i] support]"
+msgstr "[支持富文本格式的[color=red]正文[/color]]"
+
+msgid "[Rich [color=red]Content [/color] [color=green]Brief[/color] with [i]BBCode[/i] support]"
+msgstr "[支持富文本格式的[color=red]正文[/color]与[color=green]摘要[/color]]"
+
+msgid "[Character Name]"
+msgstr "[人物名称]"
+
+msgid "Dialog line X."
+msgstr "示例台词一。"
+
+msgid "Dialog line Y!"
+msgstr "示例台词二。"
+
+msgid "[Played Action]"
+msgstr "[已选择的选项]"
+
+msgid "[Plaque]"
+msgstr "[入口标识]"
+
+msgid "[Node Name]"
+msgstr "[节点名称]"
+
+msgid "[Frame Label]"
+msgstr "[分组框标签]"
+
+msgid "[Frame Color]"
+msgstr "[分组框颜色]"
+
+msgid "[Rich [color=red]Frame [/color] [color=green]Label[/color] with [i]BBCode[/i] support]"
+msgstr "[支持富文本格式的[color=red]分组框[/color][color=green]标签[/color]]"
+
+msgid "[Method]"
+msgstr "[方式]"
+
+msgid "[Arguments]"
+msgstr "[参数]"
+
+msgid "[Target]"
+msgstr "[目标]"
+
+msgid "* Separated with [delimiter]"
+msgstr "* 使用[分隔符]分隔"
+
+msgid "[Name]"
+msgstr "[名称]"
+
+msgid "[Slots]"
+msgstr "[端口]"
+
+msgid "Action Choice X."
+msgstr "示例选项一。"
+
+msgid "Action Choice Y!"
+msgstr "示例选项二。"
+
+msgid "[Reason]"
+msgstr "[跳转说明]"
+
+msgid "[Destination Name]"
+msgstr "[目标名称]"
+
+msgid "[Destination]"
+msgstr "[跳转目标]"
+
+msgid "[Macro Title]"
+msgstr "[片段标题]"
+
+msgid "[Marker Label]"
+msgstr "[标记标签]"
+
+msgid "[Marker Color]"
+msgstr "[标记颜色]"
+
+msgid "[Rich [color=cyan]Monolog[/color] with [i]BBCode[/i] support]"
+msgstr "[支持富文本格式的[color=cyan]独白[/color]]"
+
+msgid "[Rich [color=cyan]Monolog[/color] [color=yellow]Brief[/color] with [i]BBCode[/i] support]"
+msgstr "[支持富文本格式的[color=cyan]独白[/color]与[color=yellow]摘要[/color]]"
+
+msgid "[Tag: Value]"
+msgstr "[标签：值]"
+
+msgid "[Tag Key]"
+msgstr "[标签键]"
+
+msgid "[Matched Pattern | EOL]"
+msgstr "[匹配规则 | 结束]"
+
+msgid "[Tag-Key: Value]"
+msgstr "[标签键：值]"
+
+msgid "[Prompt Question]"
+msgstr "[向玩家提问]"
+
+msgid "[Result]"
+msgstr "[结果]"
+
+msgid "[Type]"
+msgstr "[类型]"
+
+msgid "[Variable Name]"
+msgstr "[变量名称]"
+
+msgid "[Expression]"
+msgstr "[表达式]"

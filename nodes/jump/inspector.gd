@@ -82,7 +82,7 @@ func refresh_suggestions(query:String = "") -> void:
 			var item_text = SUGGESTION_ITEM_TEMPLATE.format({
 					"id": node_id,
 					"name": the_node.name,
-					"capitalized_type": the_node.type.capitalize()
+					"capitalized_type": tr(the_node.type.capitalize())
 				})
 			_SUGGESTION_NODE_ID_LIST_BY_NAME[the_node.name] = node_id
 			_SUGGESTION_NODE_ID_LIST_BY_ITEM_TEXT[item_text] = node_id

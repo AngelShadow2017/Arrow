@@ -1,0 +1,39 @@
+# Simplified Chinese UI translation for Arrow
+msgid ""
+msgstr ""
+"Project-Id-Version: Arrow Writing\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Jump"
+msgstr "剧情跳转"
+
+msgid "JUMP_INSPECTOR_FIELD_REASON"
+msgstr "跳转说明"
+
+msgid "JUMP_INSPECTOR_FIELD_REASON_PLACEHOLDER"
+msgstr "例如：升级、进入下一场景……"
+
+msgid "JUMP_INSPECTOR_FIELD_DESTINATION"
+msgstr "跳转目标"
+
+msgid "JUMP_INSPECTOR_FIELD_DESTINATION_PLACEHOLDER"
+msgstr "目标节点编号"
+
+msgid "JUMP_CONSOLE_UNSET_REASON_MSG"
+msgstr "未填写跳转说明"
+
+msgid "JUMP_CONSOLE_INVALID_MSG"
+msgstr "无效"
+
+msgid "JUMP_CONSOLE_UNSET_TARGET_MSG"
+msgstr "未设置"
+
+msgid "JUMP_NODE_UNSET_REASON_MSG"
+msgstr "未填写跳转说明"
+
+msgid "JUMP_NODE_UNSET_TARGET_NAME"
+msgstr "未设置"

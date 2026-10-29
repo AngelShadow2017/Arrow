@@ -1,0 +1,81 @@
+# Simplified Chinese UI translation for Arrow
+msgid ""
+msgstr ""
+"Project-Id-Version: Arrow Writing\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Tag Edit"
+msgstr "修改人物标签"
+
+msgid "TAG_EDIT_CONSOLE_ACT_SKIP"
+msgstr "跳过"
+
+msgid "TAG_EDIT_INSPECTOR_FIELD_CHARACTER"
+msgstr "人物"
+
+msgid "TAG_EDIT_INSPECTOR_APPLY_GLOBAL_CHAR_FILTERS_TOOLTIP"
+msgstr "沿用人物面板的筛选条件。\n当前人物始终显示。"
+
+msgid "TAG_EDIT_INSPECTOR_FIELD_EDIT"
+msgstr "编辑方式"
+
+msgid "TAG_EDIT_INSPECTOR_FIELD_KEY_PLACEHOLDER"
+msgstr "键（必填且不能为空）"
+
+msgid "TAG_EDIT_INSPECTOR_FIELD_VALUE_PLACEHOLDER"
+msgstr "值"
+
+msgid "TAG_EDIT_CONSOLE_METHOD_INVALID"
+msgstr "不适用"
+
+msgid "TAG_EDIT_CONSOLE_METHOD_INVALID_HINT"
+msgstr "无法使用：此节点的资源数据已损坏。"
+
+msgid "TAG_EDIT_CONSOLE_INVALID_DATA"
+msgstr "无效"
+
+msgid "TAG_EDIT_CONSOLE_TAG_KEY_VALUE_FORMAT_STR"
+msgstr "{key}：`{value}`"
+
+msgid "TAG_EDIT_INSPECTOR_NO_CHARACTER_TXT"
+msgstr "暂无可用人物"
+
+msgid "TAG_EDIT_NODE_INVALID_DATA"
+msgstr "无效"
+
+msgid "TAG_EDIT_NODE_TAG_KEY_VALUE_FORMAT_STR"
+msgstr "{key}：`{value}`"
+
+msgid "TAG_EDIT_METHOD_INSET"
+msgstr "仅新增"
+
+msgid "TAG_EDIT_METHOD_RESET"
+msgstr "仅更新已有标签"
+
+msgid "TAG_EDIT_METHOD_OVERSET"
+msgstr "新增或更新"
+
+msgid "TAG_EDIT_METHOD_OUTSET"
+msgstr "按键和值删除"
+
+msgid "TAG_EDIT_METHOD_UNSET"
+msgstr "按键删除"
+
+msgid "TAG_EDIT_METHOD_HINT_INSET"
+msgstr "仅当键不存在时，新增该键和值。"
+
+msgid "TAG_EDIT_METHOD_HINT_RESET"
+msgstr "仅当键已存在时，更新标签值。"
+
+msgid "TAG_EDIT_METHOD_HINT_OVERSET"
+msgstr "键已存在时更新值，不存在时新增标签。"
+
+msgid "TAG_EDIT_METHOD_HINT_OUTSET"
+msgstr "键和值都匹配时删除标签。"
+
+msgid "TAG_EDIT_METHOD_HINT_UNSET"
+msgstr "只要键匹配就删除标签。"

@@ -15,6 +15,7 @@ signal mind_initialized()
 @onready var Mind = CentralMind.Mind.new(self)
 @onready var Grid = $/root/Main/Editor/Center/Grid
 var WritingWorkspace
+var DockLayout
 
 # Quick Preferences (defaults)
 @export var _AUTO_INSPECT:bool = true
@@ -37,6 +38,8 @@ func _ready() -> void:
 	Mind.post_initialization()
 	WritingWorkspace = preload("res://scripts/editor/writing_workspace.gd").new()
 	$Editor/Center.add_child(WritingWorkspace)
+	DockLayout = preload("res://scripts/editor/dock_layout.gd").new()
+	add_child(DockLayout)
 	var autosave = Timer.new()
 	autosave.wait_time = 30.0
 	autosave.timeout.connect(Mind.autosave_writing_project)
@@ -152,6 +155,7 @@ func store_panels_state() -> void:
 	pass
 
 func safe_quit_app() -> void:
+	DockLayout.save_layout()
 	store_panels_state()
 	store_window_state()
 	await TheTree.process_frame

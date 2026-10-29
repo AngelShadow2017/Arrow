@@ -98,7 +98,10 @@ class UiManager :
 			"inspector":
 				MAIN_UI.inspector_view_toggle.set_deferred("button_pressed", visibility)
 		# ... then open and track the `panel`
-		PANELS[panel].set_deferred("visible", visibility)
+		if Main.DockLayout != null and Main.DockLayout.panels.has(panel):
+			Main.DockLayout.set_panel_open(panel, visibility)
+		else:
+			PANELS[panel].set_deferred("visible", visibility)
 		track_open_panels(panel, visibility)
 		pass
 		
@@ -155,7 +158,7 @@ class UiManager :
 	func reset_theme(by_id:int = 0) -> int:
 		if by_id < 0 || by_id > Settings.THEMES.size() :
 			by_id = 0
-		var theme = Settings.THEMES[by_id].resource
+		var theme = preload("res://scripts/editor/writing_style.gd").make_theme(Settings.THEMES[by_id].resource, by_id == 1)
 		for adjustment_layer in get_theme_adjustment_layers():
 			adjustment_layer.call_deferred("set_theme", theme)
 		return by_id
@@ -189,6 +192,10 @@ class UiManager :
 		pass
 	
 	func restore_panels_state(tracked = null) -> void:
+		if Main.DockLayout != null:
+			_PANELS_TRACKED = {}
+			Main.DockLayout.queue_layout()
+			return
 		if tracked is Dictionary:
 			_PANELS_TRACKED = tracked
 		if _WINDOW_RESTORED && _PANELS_TRACKED.size() > 0:

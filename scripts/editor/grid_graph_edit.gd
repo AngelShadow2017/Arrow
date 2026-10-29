@@ -396,6 +396,9 @@ func draw_node(node_id:int, node:Dictionary, map:Dictionary, type:Dictionary) ->
 	# and keeping a reference to it
 	_DRAWN_NODES_BY_ID[node_id] = node_instance
 	add_child(node_instance)
+	for child in node_instance.find_children("Kind", "Button", true, false):
+		child.icon = type.icon
+		child.add_theme_color_override("font_disabled_color", Color("aebed7"))
 	update_grid_node_box(node_id, node)
 	update_grid_node_map(node_instance, map)
 	if map.has("io"):

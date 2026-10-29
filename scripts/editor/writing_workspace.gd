@@ -1,9 +1,11 @@
 # Task-first navigation for the offline writing edition of Arrow.
 extends PanelContainer
 
+const Look = preload("res://scripts/editor/writing_style.gd")
+
 const KINDS = ["主线", "支线"]
 const STATUSES = ["构思", "写作中", "待修订", "完成"]
-const PANEL_WIDTH = 310.0
+const PANEL_WIDTH = 320.0
 
 var Main
 var task_tree:Tree
@@ -37,21 +39,18 @@ var removing_task:String = ""
 var refresh_pending:bool = false
 var tree_items:Dictionary = {}
 var collapsed_tasks:Dictionary = {}
+var collapsed_groups:Dictionary = {}
 var tabs:TabContainer
 var library
 var versions
-var expanded_inspector:bool = false
-var inspector_rect:Rect2
+var panel_sections:VBoxContainer
+var details_scroll:ScrollContainer
 
 func _ready() -> void:
 	Main = get_tree().root.get_node("Main")
 	name = "WritingWorkspace"
 	set_anchors_and_offsets_preset(Control.PRESET_LEFT_WIDE)
 	offset_right = PANEL_WIDTH
-	Main.Grid.offset_left = PANEL_WIDTH + 6
-	var minimap = Main.get_node("Editor/Center/MiniMap")
-	minimap.offset_left += PANEL_WIDTH
-	minimap.offset_right += PANEL_WIDTH
 	_build_panel()
 	_build_dialogs()
 	Main.Mind.writing_workspace_changed.connect(queue_refresh)
@@ -66,6 +65,7 @@ func _label(text:String, parent:Node) -> Label:
 func _button(text:String, parent:Node, action:Callable) -> Button:
 	var button = Button.new()
 	button.text = text
+	button.add_theme_constant_override("h_separation", 6)
 	parent.add_child(button)
 	button.pressed.connect(action)
 	return button
@@ -73,17 +73,27 @@ func _button(text:String, parent:Node, action:Callable) -> Button:
 func _build_panel() -> void:
 	var margin = MarginContainer.new()
 	for edge in ["left", "right", "top", "bottom"]:
-		margin.add_theme_constant_override("margin_" + edge, 10)
+		margin.add_theme_constant_override("margin_" + edge, 4)
 	add_child(margin)
+	panel_sections = VBoxContainer.new()
+	margin.add_child(panel_sections)
+	var scroll_content = ScrollContainer.new()
+	scroll_content.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	scroll_content.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll_content.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	panel_sections.add_child(scroll_content)
 	tabs = TabContainer.new()
-	margin.add_child(tabs)
+	tabs.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	tabs.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll_content.add_child(tabs)
 	var column = VBoxContainer.new()
 	column.name = "任务"
 	column.add_theme_constant_override("separation", 8)
 	tabs.add_child(column)
-	_label("剧情工作台 · 离线", column).add_theme_font_size_override("font_size", 20)
 	open_path = _label("", column)
 	open_path.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	open_path.add_theme_font_size_override("font_size", 12)
+	open_path.add_theme_color_override("font_color", Look.MUTED)
 	search = LineEdit.new()
 	search.placeholder_text = "搜索任务、概要或场景名"
 	search.clear_button_enabled = true
@@ -91,13 +101,15 @@ func _build_panel() -> void:
 	search.text_changed.connect(func(_text): queue_refresh())
 	var create_row = HBoxContainer.new()
 	column.add_child(create_row)
-	_button("＋主线", create_row, _edit_task.bind("", "主线"))
-	_button("＋支线", create_row, _edit_task.bind("", "支线"))
-	_button("保存", create_row, func(): Main.Mind.central_event_dispatcher("save_project"))
+	_button("主线", create_row, _edit_task.bind("", "主线")).icon = Look.icon("main", Color(Look.COLORS.main))
+	_button("支线", create_row, _edit_task.bind("", "支线")).icon = Look.icon("side", Color(Look.COLORS.side))
 	task_tree = Tree.new()
 	task_tree.hide_root = true
+	task_tree.columns = 2
+	task_tree.set_column_expand(1, false)
+	task_tree.set_column_custom_minimum_width(1, 60)
 	task_tree.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	task_tree.custom_minimum_size = Vector2(0, 180)
+	task_tree.custom_minimum_size = Vector2(0, 140)
 	column.add_child(task_tree)
 	task_tree.item_selected.connect(_on_selected)
 	task_tree.item_activated.connect(_on_activated)
@@ -106,26 +118,31 @@ func _build_panel() -> void:
 	column.add_child(scene_row)
 	new_scene_button = _button("＋场景", scene_row, _new_scene)
 	rename_scene_button = _button("改名", scene_row, _rename_scene)
-	move_scene_button = _button("移动到…", scene_row, _move_scene)
+	move_scene_button = _button("移动", scene_row, _move_scene)
 	var task_row = HBoxContainer.new()
 	column.add_child(task_row)
-	edit_task_button = _button("编辑任务", task_row, func(): _edit_task(selected_task))
-	remove_task_button = _button("移除任务…", task_row, _confirm_remove_task)
-	var scroll = ScrollContainer.new()
-	scroll.custom_minimum_size.y = 115
-	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	scroll.size_flags_stretch_ratio = 0.35
-	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	column.add_child(scroll)
-	details = _label("", scroll)
+	edit_task_button = _button("任务设定", task_row, func(): _edit_task(selected_task))
+	edit_task_button.icon = Look.icon("edit")
+	remove_task_button = _button("移除…", task_row, _confirm_remove_task)
+	var details_toggle = _button("任务概要与关联", column, func(): details_scroll.visible = not details_scroll.visible)
+	details_toggle.flat = true
+	details_toggle.alignment = HORIZONTAL_ALIGNMENT_LEFT
+	details_toggle.icon = Look.icon("content")
+	details_toggle.tooltip_text = "展开或收起任务概要，完整设定可在“任务设定”中编辑"
+	details_scroll = ScrollContainer.new()
+	details_scroll.custom_minimum_size.y = 130
+	details_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	details_scroll.hide()
+	column.add_child(details_scroll)
+	details = _label("", details_scroll)
 	details.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	details.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	var shortcuts = HBoxContainer.new()
 	column.add_child(shortcuts)
 	_button("人物", shortcuts, _show_inspector.bind("Characters"))
-	_button("节点正文", shortcuts, _show_inspector.bind("Node"))
+	_button("正文", shortcuts, _show_inspector.bind("Node"))
 	_button("项目", shortcuts, _show_inspector.bind("Project"))
-	_button("展开", shortcuts, _expand_inspector)
+	_button("专注", shortcuts, _expand_inspector)
 	_label("单击选中 · 双击场景进入画布", column).add_theme_font_size_override("font_size", 12)
 	library = preload("res://scripts/editor/writing_library.gd").new()
 	library.name = "设定"
@@ -135,6 +152,8 @@ func _build_panel() -> void:
 	versions.name = "版本"
 	versions.workspace = self
 	tabs.add_child(versions)
+	for index in range(tabs.get_tab_count()):
+		tabs.set_tab_icon(index, Look.icon(["main", "book", "history"][index]))
 
 func _dialog(title_text:String, dialog_size:Vector2i) -> ConfirmationDialog:
 	var dialog = ConfirmationDialog.new()
@@ -234,7 +253,13 @@ func refresh() -> void:
 	for kind in KINDS:
 		var group = task_tree.create_item(root)
 		group.set_text(0, kind)
+		group.set_icon(0, Look.icon("main" if kind == "主线" else "side", Color(Look.COLORS.main if kind == "主线" else Look.COLORS.side)))
+		group.set_custom_color(0, Look.MUTED)
+		group.set_custom_font_size(0, 12)
 		group.set_selectable(0, false)
+		group.set_selectable(1, false)
+		group.set_metadata(0, {"task": "", "scene": -1, "group": kind})
+		group.collapsed = collapsed_groups.get(kind, false) and query.is_empty()
 		for task_id in tasks:
 			var task:Dictionary = tasks[task_id]
 			if task.kind != kind:
@@ -247,7 +272,12 @@ func refresh() -> void:
 			if not task_matches and matching_scenes.is_empty():
 				continue
 			var item = task_tree.create_item(group)
-			item.set_text(0, "%s · %s" % [task.name, task.status])
+			item.set_text(0, task.name)
+			item.set_text(1, task.status)
+			item.set_custom_color(1, Color("7dcbb0") if task.status == "完成" else Look.MUTED)
+			item.set_custom_font_size(1, 12)
+			item.set_selectable(1, false)
+			item.set_icon(0, Look.icon("folder"))
 			item.set_metadata(0, {"task": task_id, "scene": -1})
 			item.set_tooltip_text(0, task.summary)
 			item.collapsed = collapsed_tasks.get(task_id, false) and query.is_empty()
@@ -256,6 +286,9 @@ func refresh() -> void:
 				_add_scene_item(item, scene_id, scenes[scene_id], task_id, current_scene)
 	var unassigned = task_tree.create_item(root)
 	unassigned.set_text(0, "未归属任务")
+	unassigned.set_icon(0, Look.icon("folder"))
+	unassigned.set_custom_color(0, Look.MUTED)
+	unassigned.set_selectable(1, false)
 	unassigned.set_metadata(0, {"task": "", "scene": -1})
 	tree_items["task:"] = unassigned
 	for scene_id in scenes:
@@ -279,15 +312,22 @@ func refresh() -> void:
 
 func _add_scene_item(parent:TreeItem, scene_id:int, scene:Dictionary, task_id:String, current:int) -> void:
 	var item = task_tree.create_item(parent)
-	item.set_text(0, ("▶ " if scene_id == current else "") + scene.name)
+	item.set_text(0, scene.name)
+	item.set_icon(0, Look.icon("scene", Color(Look.COLORS.scene) if scene_id == current else Look.MUTED))
+	item.set_selectable(1, false)
+	if scene_id == current:
+		item.set_custom_color(0, Color(Look.COLORS.scene))
 	item.set_metadata(0, {"task": task_id, "scene": scene_id})
 	item.set_tooltip_text(0, "双击打开场景画布")
 	tree_items["scene:%s" % scene_id] = item
 
 func _on_collapsed(item:TreeItem) -> void:
 	var meta = item.get_metadata(0)
-	if meta is Dictionary and meta.scene < 0 and not meta.task.is_empty():
-		collapsed_tasks[meta.task] = item.collapsed
+	if meta is Dictionary:
+		if meta.has("group"):
+			collapsed_groups[meta.group] = item.collapsed
+		elif meta.scene < 0 and not meta.task.is_empty():
+			collapsed_tasks[meta.task] = item.collapsed
 
 func _on_selected() -> void:
 	var item = task_tree.get_selected()
@@ -417,13 +457,4 @@ func _show_inspector(tab:String) -> void:
 	Main.Mind.Inspector.show_tab_of_title(tab)
 
 func _expand_inspector() -> void:
-	var inspector = Main.Mind.Inspector
-	Main.UI.set_panel_visibility("inspector", true)
-	if expanded_inspector:
-		inspector.position = inspector_rect.position
-		inspector.size = inspector_rect.size
-	else:
-		inspector_rect = inspector.get_rect()
-		inspector.position = Vector2(PANEL_WIDTH + 18, 70)
-		inspector.size = Main.get_viewport().get_visible_rect().size - Vector2(PANEL_WIDTH + 36, 130)
-	expanded_inspector = not expanded_inspector
+	Main.DockLayout.toggle_maximize("inspector")

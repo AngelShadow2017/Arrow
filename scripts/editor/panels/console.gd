@@ -697,11 +697,4 @@ func _on_playing_node_gui_input(event:InputEvent, _node = null, node_uid:int = -
 				_request_mind("locate_node_on_grid", { "id": node_uid, "highlight": true } )
 	pass
 
-# make this panel,
-# draggable
-# ... it also makes the panel compete for the parent's top z-index by default
-@onready var drag_point = $/root/Main/FloatingTools/Control/Console/Sections/Titlebar/Drag
-@onready var draggable = Helpers.Draggable.new(self, drag_point)
-# and resizable
-@onready var resize_point = $/root/Main/FloatingTools/Control/Console/Sections/Titlebar/Resizer
-@onready var resizable = Helpers.Resizable.new(self, resize_point)
+# DockLayout manages this panel's title bar, placement and resize handles.

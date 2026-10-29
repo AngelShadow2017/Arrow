@@ -23,18 +23,21 @@ var remove_dialog:ConfirmationDialog
 var removing_id:String = ""
 
 func _ready() -> void:
-	workspace._label("人物与世界观", self).add_theme_font_size_override("font_size", 20)
+	add_theme_constant_override("separation", 10)
+	workspace._label("人物与世界观", self).add_theme_font_size_override("font_size", 17)
 	search = LineEdit.new()
 	search.placeholder_text = "搜索名称、设定与事实"
 	search.clear_button_enabled = true
 	add_child(search)
 	search.text_changed.connect(func(_value): refresh())
 	filter_related = CheckBox.new()
-	filter_related.text = "仅看当前选中任务 / 场景关联"
+	filter_related.text = "仅显示关联资料"
+	filter_related.tooltip_text = "筛选与任务页当前选中的任务或场景关联的资料"
 	add_child(filter_related)
 	filter_related.toggled.connect(func(_value): refresh())
-	workspace._button("＋新建设定", self, _edit.bind(""))
+	workspace._button("新建设定", self, _edit.bind("")).icon = workspace.Look.icon("plus")
 	entries = ItemList.new()
+	entries.fixed_icon_size = Vector2i(18, 18)
 	entries.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	entries.custom_minimum_size.y = 130
 	add_child(entries)
@@ -48,6 +51,7 @@ func _ready() -> void:
 	detail.editable = false
 	detail.wrap_mode = TextEdit.LINE_WRAPPING_BOUNDARY
 	detail.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	detail.size_flags_stretch_ratio = 0.7
 	add_child(detail)
 	_build_dialog()
 
@@ -66,18 +70,27 @@ func refresh() -> void:
 	var selected = _selected()
 	entries.clear()
 	var lore:Dictionary = workspace.Main.Mind.get_writing_lore()
-	for entry_id in lore:
-		var entry:Dictionary = lore[entry_id]
-		var relevant:bool = entry.tasks.has(workspace.selected_task) or entry.scenes.has(workspace.selected_scene)
-		if filter_related.button_pressed and not relevant:
-			continue
-		if not search.text.is_empty() and not (entry_name(entry) + entry.notes + entry.facts + entry.plans).containsn(search.text):
-			continue
-		entries.add_item("%s · %s" % [entry.kind, entry_name(entry)])
-		var index = entries.item_count - 1
-		entries.set_item_metadata(index, entry_id)
-		if entry_id == selected:
-			entries.select(index)
+	for entry_kind in KINDS:
+		var listed_header:bool = false
+		for entry_id in lore:
+			var entry:Dictionary = lore[entry_id]
+			if entry.kind != entry_kind:
+				continue
+			var relevant:bool = entry.tasks.has(workspace.selected_task) or entry.scenes.has(workspace.selected_scene)
+			if filter_related.button_pressed and not relevant:
+				continue
+			if not search.text.is_empty() and not (entry_name(entry) + entry.notes + entry.facts + entry.plans).containsn(search.text):
+				continue
+			if not listed_header:
+				entries.add_item(entry_kind, workspace.Look.icon(entry_kind, Color(workspace.Look.COLORS[entry_kind])))
+				entries.set_item_selectable(entries.item_count - 1, false)
+				entries.set_item_custom_fg_color(entries.item_count - 1, workspace.Look.MUTED)
+				listed_header = true
+			entries.add_item("  " + entry_name(entry), workspace.Look.icon(entry_kind, Color(workspace.Look.COLORS[entry_kind])))
+			var index = entries.item_count - 1
+			entries.set_item_metadata(index, entry_id)
+			if entry_id == selected:
+				entries.select(index)
 	_show_detail()
 
 func _show_detail() -> void:
@@ -86,7 +99,7 @@ func _show_detail() -> void:
 	edit_button.disabled = entry_id.is_empty() or locked
 	remove_button.disabled = entry_id.is_empty() or locked
 	if entry_id.is_empty():
-		detail.text = "集中记录人物、地点、阵营与世界规则。\n\n将“已确定事实”和“待定构思”分开，避免把尚未采用的想法误当成正式设定。\n\n编辑资料时可关联多个任务与场景。"
+		detail.text = "选择一项资料查看详情。\n\n将已确定事实与待定构思分开记录，可关联到任务或场景。"
 		return
 	var entry:Dictionary = workspace.Main.Mind.get_writing_lore()[entry_id]
 	detail.text = "%s\n\n%s\n\n已确定事实\n%s\n\n待定构思\n%s" % [entry_name(entry), entry.notes, entry.facts, entry.plans]

@@ -124,11 +124,4 @@ func _on_gui_input(event: InputEvent) -> void:
 		scroll_tabs_workaround(event)
 	pass
 
-# make this panel,
-# draggable
-	# ... it also makes the panel compete for the parent's top z-index by default
-@onready var drag_point = $/root/Main/FloatingTools/Control/Inspector/Sections/Titlebar/Drag
-@onready var draggable = Helpers.Draggable.new(self, drag_point)
-# and resizable
-@onready var resize_pont = $/root/Main/FloatingTools/Control/Inspector/Sections/Titlebar/Resizer
-@onready var resizable = Helpers.Resizable.new(self, resize_pont)
+# DockLayout manages this panel's title bar, placement and resize handles.

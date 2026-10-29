@@ -36,7 +36,8 @@ class NodeTypesHandler :
 			var the_node = load(the_node_path)
 			var the_inspector = load(the_inspector_path)
 			var the_console = load(the_console_path)
-			var the_icon = load(the_icon_path)
+			var appearance = preload("res://scripts/editor/writing_style.gd")
+			var the_icon = appearance.icon(node_type_dir_name) if node_type_dir_name in appearance.NODE_TYPES else load(the_icon_path)
 			# ...
 			var the_translations_dir = Helpers.Utils.normalize_dir_path(dir_path + NODE_TYPE_TRANSLATION_FILES_DIR)
 			var translation_files = DirAccess.get_files_at(the_translations_dir) if DirAccess.dir_exists_absolute(the_translations_dir) else PackedStringArray()

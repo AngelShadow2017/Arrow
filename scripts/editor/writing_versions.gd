@@ -15,7 +15,8 @@ var listed_directory:String = ""
 var listed_files:PackedStringArray = []
 
 func _ready() -> void:
-	workspace._label("命名版本", self).add_theme_font_size_override("font_size", 20)
+	add_theme_constant_override("separation", 10)
+	workspace._label("命名版本", self).add_theme_font_size_override("font_size", 17)
 	status = workspace._label("", self)
 	status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	version_name = LineEdit.new()

@@ -33,6 +33,7 @@ class ConfigHandler :
 		"window": null,
 		"panels": null,
 		"history_size": 50,
+		"writing_layout": {},
 	}
 	# active configurations
 	var TEMPORARY = {} # middle/preview state (active but not confirmed yet)
